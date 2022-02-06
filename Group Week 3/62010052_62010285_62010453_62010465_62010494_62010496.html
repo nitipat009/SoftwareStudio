@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Style -->
+
+    <head>
+
+        <!-- Default format -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Title -->
+        <title>Magazine</title>
+
+        <!-- Boostrap -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous"
+        />
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Gluten">
+
+        <!-- Style -->
+        <style>
+            .nav-container {
+                position: fixed;
+                padding: 0;
+                display: flex;
+                z-index: 9999;
+            }
+
+            /* Trapezoid Box Style */
+            .nav-title-box {
+                position: absolute;
+                width: 360px;
+                height: 100px;
+                background-image: url('https://cdn.discordapp.com/attachments/939618238898253856/939633709429162084/unknown.png');
+            }
+
+            .title-box-trapezoid {
+                margin-left: 30px;
+                transform: skew(-30deg, 0deg);
+
+                border-color: #ffd900;
+                border-width: 3px;
+                border-style: none solid solid none;
+            }
+
+            .nav-title {
+                position: absolute;
+                padding: 4px 8px 8px 32px;
+                font-family: "Brush Script MT", cursive;
+                font-size: 56px;
+                background: linear-gradient(180deg, #fffb00 0%, #d48a00 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -webkit-animation: glow 2s ease-in-out infinite alternate;
+                -moz-animation: glow 2s ease-in-out infinite alternate;
+                animation: glow 2s ease-in-out infinite alternate;
+            }
+
+            @-webkit-keyframes glow {
+                from {
+                  text-shadow: 0 0 10px rgba(255, 208, 0, 0.2), 0 0 20px rgba(255, 208, 0, 0.2), 0 0 30px rgba(255, 208, 0, 0.2), 0 0 40px rgba(255, 208, 0, 0.2), 0 0 50px rgba(255, 208, 0, 0.2), 0 0 60px rgba(255, 208, 0, 0.2), 0 0 70px rgba(255, 208, 0, 0.2);
+                }
+                to {
+                  text-shadow: 0 0 10px rgba(255, 208, 0, 0.7), 0 0 20px rgba(255, 208, 0, 0.7), 0 0 30px rgba(255, 208, 0, 0.7), 0 0 40px rgba(255, 208, 0, 0.7), 0 0 50px rgba(255, 208, 0, 0.7), 0 0 60px rgba(255, 208, 0, 0.7), 0 0 70px rgba(255, 208, 0, 0.7);
+                }
+              }
+
+            /* Content */
+            .nav-bar {
+                margin-left: 400px;
+                height: 100px;
+                display: flex;
+            }
+
+            .nav-content {
+                position: relative;
+                width: 200px;
+                height: 64px;
+            }
+
+            .nav-content-container {
+                position: absolute;
+                width: 200px;
+                height: 64px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-content-trapezoid {
+                position: absolute;
+                width: 200px;
+                height: 64px;
+                transform: skew(-30deg, 0deg);
+
+                background-image: url('https://cdn.discordapp.com/attachments/939618238898253856/939633709429162084/unknown.png');
+                border-color: #ffd900;
+                border-width: 2px;
+                border-style: none solid solid none;
+                color: #ffd900;
+                font-weight: bold;
+            }
+
+            .nav-text {
+                color: #ffd900;
+                font-weight: bold;
+            }
+
+            .nav-button {
+                position: absolute;
+                width: 200px;
+                height: 64px;
+                transform: skew(-30deg, 0deg);                
+            }
+
+            .nav-button span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: block;
+                box-sizing: border-box;
+            }
+
+            .nav-button span:nth-child(1) {
+                width: 200px;
+                height: 64px;
+                transform:rotate(0deg);
+            }
+
+            .nav-button span:nth-child(2) {
+                margin: -68px 68px;
+                width: 64px;
+                height: 200px;
+                transform:rotate(90deg);
+            }
+
+            .nav-button span:nth-child(3) {
+                width: 200px;
+                height: 64px;
+                transform:rotate(180deg);
+            }
+
+            .nav-button span:nth-child(4) {
+                margin: -68px 66px;
+                width: 64px;
+                height: 200px;
+                transform:rotate(270deg);
+            }
+
+            .nav-button span:before{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(180deg, #ff9900 0%, #ffae00 100%);
+                box-shadow: 0 0 8px rgba(255, 208, 0, 0.7), 0 0 8px rgba(255, 208, 0, 0.7);
+                animation: animate 3s linear infinite;
+            }
+
+            @keyframes animate {
+                0% {
+                    transform:scaleX(0);
+                    transform-origin: left;
+                }
+                50% {
+                    transform:scaleX(1);
+                    transform-origin: left;
+                }
+                50.1% {
+                    transform:scaleX(1);
+                    transform-origin: right;
+                  
+                }
+                100% {
+                    transform:scaleX(0);
+                    transform-origin: right;
+                }
+            } 
+
+            .main-content {
+                display: flex;
+                flex-direction: column;
+                align-items:center;
+                padding: 100px 0 0 0;
+            }
+
+            .main-content div{
+                width: 100%; 
+                height: 100%;
+            }
+
+            .pic {
+                opacity: 1;
+                -webkit-transition: .3s ease-in-out;
+                transition: .1s ease-in-out;
+            }
+            .pic:hover {
+                opacity: .3;
+            }
+                
+            [ id = "62010465"]{
+                  background-image: url(https://cdn.discordapp.com/attachments/814157782152118322/939567152615276544/softStuBG.jpg);
+            }
+            
+            .maleText{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between
+            }
+            
+            [ id = "62010465"] p{
+                color: rgb(146, 146, 146);
+                font-size: 16px;
+            }
+            
+            [ id = "62010465"] p i{
+                color: white;
+                font-size: 30px;
+                text-shadow: 1px 1px 1px #000000;
+            }
+            
+            .rowed{
+                display: flex;
+                justify-content: space-evenly;
+                padding-right: 5%;
+            }
+            
+            .rowed img{
+                width: 30%;
+                padding-bottom: 0%;
+            }
+                  
+            .maleT1{
+                padding-right: 2%;
+            }
+            
+            .rahas{
+                padding-bottom: 20px;
+                padding-left: 20px;
+                padding-top: 10px;
+                color: white;
+                text-shadow: 1px 1px 1px #000000;
+            }
+            
+            .miniRowed{
+                display: flex;
+                padding-bottom: 20px;
+            }
+            
+            .miniColumed{
+                display: flex;
+                flex-direction: column;
+            }
+            
+            #maleCard{
+                color: rgb(115, 141, 117);
+            }
+            
+            .maleContract{
+                padding-top: 2%;
+            }
+            
+            .maleContract img{
+                 width: 4%;
+            }
+            
+            .maleContract img:hover{
+                opacity: 0.3;
+            }
+                  
+            [ id = "62010465"] img{
+                padding-top: 10px;
+            }
+            
+            [ id = "62010494"] {
+                display: flex;
+                flex-direction: row;
+                background-image: url('https://partner.sunmi.com/assets/images/login/bg_dark.jpg');
+            }
+              
+            [ id = "62010494"] h2 ,[ id = "62010494"] h3,[ id = "62010494"] p,[ id = "62010494"] li{
+                color :white;
+             }
+
+            .pure-container {
+                width: 100%;
+                min-height: 900px;
+                display: grid;
+                grid-template-columns: 480px 1420px;
+                grid-row: 900px;
+                background-color: rgb(0, 0, 0);
+            }
+
+            .pure-controller-container {
+                display: grid;
+                grid-template-rows: 60px 340px 40px 260px 200px;
+
+                background-color: rgb(37, 37, 37);
+                border-color: rgb(170, 170, 170);
+                border-style: none solid none none;
+                border-width: 2px;
+            }
+
+            .pure-controller {
+                padding-top: 20px;
+            }
+
+            .pure-controller div {
+                border-color: rgb(255, 0, 0);
+                border-style: solid;
+                border-width: 2px;
+            }
+            
+            .pure-monitor {
+                display: grid;
+                justify-content: center;
+                align-content: center;
+            }
+
+            .pure-map-container {
+                position: relative;
+                min-width: 720px;
+                min-height: 720px;
+                z-index: 0;
+            }
+
+            .pure-map {
+                position: absolute;
+                display: grid;
+                grid-template-columns: 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px;
+                grid-template-rows: 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px 48px;
+                overflow: hidden;
+            }
+
+            .pure-character {
+                max-width: 48px;
+                max-height: 48px;
+                position: absolute;
+                margin: 336px 0px 0px 336px;
+
+
+                transition: all 0.5s linear;
+            }
+
+            .pure-text-box {     
+                max-width: 600px;
+                max-height: 160px;
+                margin-left: 60px;
+                margin-top: 500px;
+                padding: 15px;
+                position: absolute;
+                color: wheat;
+                background-color: rgba(194, 194, 194, 0.2);
+                color: rgb(255, 255, 255);
+                border-radius: 4%;
+                border-color: rgb(255, 255, 255);
+                border-width: 2px;
+                border-style: solid;
+                transition: opacity 0.3s ease-out;
+            }
+
+            .pure-text-box span {     
+
+                
+                
+                
+            }
+
+        </style>
+    </head>
+
+    <!-- Element -->
+    <body>
+        <!-- Nav bar -->
+        <div class="container-fluid nav-container">
+
+            <!-- Nav Trapezoid Title -->
+            <div class="nav-title-box"></div>
+            <div class="nav-title-box title-box-trapezoid"></div>
+            <div>
+                <p class="nav-title">Software Studio</p>
+            </div>
+
+            <!-- Nav Content -->
+            <nav class="nav-bar">
+                <div class="nav-content">
+                    <div class="nav-content-trapezoid"></div>
+                    <div class="nav-content-container">
+                        <span class="nav-text">
+                            62010052
+                        </span>
+                    </div>
+                    <a
+                        class="nav-button"
+                        href="#62010052"
+                        onmouseover="nav_border_on_1()"
+                        onmouseout="nav_border_off_1()"
+                        >
+                        <span class="nav-button-effect-1" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-1" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-1" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-1" style="visibility: hidden;"></span>
+                    </a>
+                </div>
+
+                <div class="nav-content">
+                    <div class="nav-content-trapezoid"></div>
+                    <div class="nav-content-container">
+                        <span class="nav-text">
+                            62010285
+                        </span>
+                    </div>
+                    <a
+                        class="nav-button"
+                        href="#62010285"
+                        onmouseover="nav_border_on_2()"
+                        onmouseout="nav_border_off_2()"
+                        >
+                        <span class="nav-button-effect-2" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-2" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-2" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-2" style="visibility: hidden;"></span>
+                    </a>
+                </div>
+
+                <div class="nav-content">
+                    <div class="nav-content-trapezoid"></div>
+                    <div class="nav-content-container">
+                        <span class="nav-text">
+                            62010453
+                        </span>
+                    </div>
+                    <a
+                        class="nav-button"
+                        href="#62010453"
+                        onmouseover="nav_border_on_3()"
+                        onmouseout="nav_border_off_3()"
+                        >
+                        <span class="nav-button-effect-3" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-3" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-3" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-3" style="visibility: hidden;"></span>
+                    </a>
+                </div>
+
+                <div class="nav-content">
+                    <div class="nav-content-trapezoid"></div>
+                    <div class="nav-content-container">
+                        <span class="nav-text">
+                            62010465
+                        </span>
+                    </div>
+                    <a
+                        class="nav-button"
+                        href="#62010465"
+                        onmouseover="nav_border_on_4()"
+                        onmouseout="nav_border_off_4()"
+                        >
+                        <span class="nav-button-effect-4" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-4" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-4" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-4" style="visibility: hidden;"></span>
+                    </a>
+                </div>
+
+                <div class="nav-content">
+                    <div class="nav-content-trapezoid"></div>
+                    <div class="nav-content-container">
+                        <span class="nav-text">
+                            62010494
+                        </span>
+                    </div>
+                    <a
+                        class="nav-button"
+                        href="#62010494"
+                        onmouseover="nav_border_on_5()"
+                        onmouseout="nav_border_off_5()"
+                        >
+                        <span class="nav-button-effect-5" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-5" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-5" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-5" style="visibility: hidden;"></span>
+                    </a>
+                </div>
+
+                <div class="nav-content">
+                    <div class="nav-content-trapezoid"></div>
+                    <div class="nav-content-container">
+                        <span class="nav-text">
+                            62010496
+                        </span>
+                    </div>
+                    <a
+                        class="nav-button"
+                        href="#62010496"
+                        onmouseover="nav_border_on_6()"
+                        onmouseout="nav_border_off_6()"
+                        >
+                        <span class="nav-button-effect-6" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-6" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-6" style="visibility: hidden;"></span>
+                        <span class="nav-button-effect-6" style="visibility: hidden;"></span>
+                    </a>
+                </div>
+
+                <!-- Script -->
+                <script>
+                    function nav_border_on_1() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-1");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "visible";
+                        }
+                    }
+                    function nav_border_off_1() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-1");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "hidden";
+                        }
+                    }
+
+                    function nav_border_on_2() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-2");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "visible";
+                        }
+                    }
+                    function nav_border_off_2() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-2");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "hidden";
+                        }
+                    }
+
+                    function nav_border_on_3() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-3");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "visible";
+                        }
+                    }
+                    function nav_border_off_3() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-3");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "hidden";
+                        }
+                    }
+
+                    function nav_border_on_4() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-4");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "visible";
+                        }
+                    }
+                    function nav_border_off_4() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-4");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "hidden";
+                        }
+                    }   
+
+                    function nav_border_on_5() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-5");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "visible";
+                        }
+                    }
+                    function nav_border_off_5() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-5");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "hidden";
+                        }
+                    }   
+
+                    function nav_border_on_6() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-6");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "visible";
+                        }
+                    }
+                    function nav_border_off_6() {
+                        const effect_element = document.getElementsByClassName("nav-button-effect-6");
+                        for (let i = 0; i < 4; i++) {
+                            effect_element[i].style.visibility = "hidden";
+                        }
+                    }   
+                </script>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container-fluid main-content">
+            
+            <div class="page-content d-flex" id="62010052" style="margin-top: -100px; width: 100%; height: 100%; background-image : url('https://cdn.discordapp.com/attachments/801841861231771711/939849224592445491/unknown.png'); background-size :cover;"">
+                <div class="col-sm">
+                </div>
+                <div class="col-sm" style="height: 100%;">
+                    <div class="d-flex flex-column flex-wrap justify-content-center" style="margin-top: 20%;">
+                        <div class="d-block" style="text-align: center; padding-bottom: 10%;">
+                            <img class="shadow" style="width: 40%; border-radius: 10px;" src = "https://cdn.discordapp.com/attachments/801841861231771711/939852917010223174/unknown.png"/>
+                        </div>
+                        <div class="d-block border rounded-3 p-4 border-danger" style="color:white ;background-color: rgba(0, 0, 0,0.5); margin-bottom: 10%;">
+                            <h2 style="text-align: center;">62010052 Kan Maksapsin</h2>
+                            <h3 style="margin-left: 5%;">ประวัตส่วนตัวทางด้านกีฬา</h3>
+                            <p>
+                                นาย กันต์ มากทรัพย์สิน ปัจจุุบันศึกษาที่สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง ตณะวิศวกรรมศาสตร์
+                                ปัจจุบันเป็นนักกีฬาเทเบิลเทนนิสของมหาลัย 
+                                อดีตเยาวชนทีมชาติกีฬาเทเบิลเทนนิสประเทศไทย 
+                            </p>
+                            <ul style="margin-left: 5%;">
+                                <li>เข้าร่วมแข่งขันกีฬาเยาชนแห่งชาติทุกปี</li>
+                                <li>เข้าร่วมแข่งขันกีฬานักเรียนนักศีกษาทุกปี</li>
+                                <li>เหรียญทองแดงกีฬาชิงแชมป์สโมสรแห่งประเทศไทย</li>
+                                <li>เหรียญทองแดงกีฬายุวชนแห่งชาติ จันทรบูรเกมส์</li>
+                                <li>ได้รับเป็น To be number one Idol จังหวัดทางด้านกีฬา</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container p-0 page-content" id="62010285">
+                <h1 class="fw-bold" style="font-family: Gluten; color:deeppink;">62010285</h1>
+                <div class="shadow row m-0 justify-content-around p-3">
+                    <div class="d-flex align-items-end">
+                        <img
+                            src="https://lv2-cdn.azureedge.net/itzy/0722616b57ef45499c09a60ea74c1286-WEB-MAINLOGO-b.png"
+                            width="70"
+                            class="me-3"
+                            />
+                        <div class="position-relative" style="top: -10px">
+                            JYP Entertainment
+                        </div>
+                    </div>
+                <div class="row px-0 py-3">
+                    <div class="d-flex justify-content-center col" style="width: 40%; ">
+                        <iframe
+                        
+                            src="https://www.youtube.com/embed/MjCZfZfucEc"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+
+                            width ="560"
+                            height="300"
+                        ></iframe>
+                    </div>
+
+                    <div class="col">
+                        <div class="h1 d-inline pe-1" style="font-family: Gluten;">CRAZY</div>
+                        <div class="h1 d-inline pe-1" style="font-family: Gluten; color:deeppink;">IN</div>
+                        <div class="h1 d-inline pe-3" style="font-family: Gluten;">LOVE</div>
+                        <div class="d-inline">Release Date 2021-09-24</div>
+                        <div class="my-3" style="text-indent: 2rem; text-align: justify">
+                            <p>
+                            - 3rd collaboration with hit-making music production team
+                            GALACTIKA *, to follow the success of “DALLA DALLA” and
+                            “WANNABE”
+                            </p>
+
+                            <p>
+                            - Title track “LOCO,” ITZY’s ‘crazy into you’ kind of love
+                            song! Spoken like a true gen Z, the lyrics captures that
+                            honest and instinctive gravitational pull towards love.
+                            </p>
+                            <p>
+                            - The FIRST full-length album we’ve all been desperately
+                            waiting for! ITZY eyes K-pop’s 2021 second half with a new
+                            lead single.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-0 py-4" style="text-indent: 2rem; text-align: justify">
+                    <p>
+                    ITZY will release their very first full-length album 〈CRAZY IN
+                    LOVE〉 on September 24th. A thrilling, highly-anticipated comeback
+                    with title track “LOCO” is scheduled to get a simultaneous worldwide
+                    release.
+                    </p>
+                
+                    <p>
+                    ITZY’s previous EP 〈GUESS WHO〉 with lead single “Mafia in the
+                    morning” saw much success on the charts since its unveiling on
+                    April 30th this year, landing on Billboard’s competitive main
+                    charts “Billboard 200” and “Artist 100” while outdoing the group’s
+                    previous record on global music platform Spotify’s “Global Top
+                    200.” Established now as a powerful performance-centric girl
+                    group, ITZY makes another big step towards the global stage with
+                    their first full-length album since debut 〈CRAZY IN LOVE〉.
+                    </p>
+                </div>
+
+                <div class="col me-3" style="text-indent: 2rem; text-align: justify">
+                    <p>
+                    On this album, ITZY members are still rooted in their signature
+                    self-assurance. But, we get an answer to the question… in the face
+                    of real love, how will these self-sufficient ladies react?
+                    </p>
+                    
+                    <p>
+                    They declare their love with explosive honesty, lyrically
+                    confessing “you take me halfway to crazy” and “oh gosh, this is
+                    the sweetest poison.” You’ll be able to witness a brand new side
+                    of the girls in the lead single “LOCO.”
+                    </p>
+                </div>
+
+                <div class="col ms-3" style="text-indent: 2rem; text-align: justify">
+                    <p>
+                    This is the third collaboration with the creators of hit tracks
+                    “DALLA DALLA” and “WANNABE.” With proven chemistry, anticipation
+                    runs high for another iconic song in collaboration with the music
+                    production team GALACTIKA * Their signature sounds including fusion
+                    groove, Latin dance, Moombahton, and Trap were infused to create a
+                    new ITZY-style
+                    </p>
+                    
+                    <p>
+                    Neo Fusion Groove genre. The Spanish word for crazy, ‘loco’ is the
+                    driving force behind the title track with the raw emotions of love
+                    encompassed musically.
+                    </p>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col text-center">
+                        <p class="h4">TRACK LIST</p>
+
+                        1. LOCO<br />
+                        2. SWIPE<br />
+                        3. Sooo LUCKY<br />
+                        4. #Twenty<br />
+                        5. B[OO]M-BOXX<br />
+                        6. Gas Me Up<br />
+                        7. LOVE is<br />
+                        8. Chillin' Chillin'<br />
+                        9. Mirror<br />
+                        10. LOCO (English Ver.)<br />
+                        11. 달라달라 (Inst.)<br />
+                        12. ICY (Inst.)<br />
+                        13. WANNABE (Inst.)<br />
+                        14. Not Shy (Inst.)<br />
+                        15. 마.피.아. In the morning (Inst.)<br />
+                        16. LOCO (Inst.)<br />
+                    </div>
+
+                    <div class="col">
+                        <img
+                            src="https://lv2-cdn.azureedge.net/itzy/220939b337f146f8a75cc6cd0299cda5-ITZY_CRAZY%20IN%20LOVE_ONLINE%20COVER_%EC%B5%9C%EC%A2%85.jpg"
+                            class="w-100 p-3 rounded-circle"
+                        />
+                    </div>
+                </div>
+
+                <div class="row w-50 py-3 justify-items-center">
+                    <a class="col text-center pic" href="https://www.instagram.com/itzy.all.in.us/" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_instagram_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://twitter.com/ITZYOfficial" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_twitter_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://www.facebook.com/OfficialItzy" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_facebook_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://www.youtube.com/c/ITZY" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_youtube_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://www.vlive.tv/channel/BAE889" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_vlive_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://weibo.com/u/7462077750?is_all=1" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_weibo_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://fans.jype.com/itzy" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_fans_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    <a  class="col text-center pic"href="https://edm-wish.jype.com/" target="_blank">
+                    <img
+                        src="https://itzy.jype.com/Content/Pc/images/common/sns_edm_b.png"
+                        class="w-75"
+                    />
+                    </a>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content" id="62010453">
+                <div
+                    class="row m-0 w-100"
+                    style="background-color: #EFEFEF; font-family: Georgia, 'Times New Roman', Times, serif; letter-spacing: 1px;">
+                        <div class="col" style="font-size: 19px;  margin: 3%;">
+                            <h2 style="color: #FF3B3F; font-weight: bold;">
+                                Memoji
+                                <span class="spinner-grow spinner-grow text-danger"></span>
+                            </h2>
+                        <p style="text-align: justify; color: black;">
+                        Memojis are animated emojis that look like real people from Apple. Apple first released a feature called
+                        Animoji in 2017, these animated emojis were able to track your face to make it appear as if you were a
+                        talking emoji in iMessage or FaceTime. Then following this release, Apple released Memojis in 2018. In other
+                        words, Memojis are basically personalized Animojis that look like the owner of the Apple product where
+                        they’re being used.
+                        </p>
+                        <h2 style="color: #FF3B3F; font-weight: bold;">
+                            What is a Memoji?
+                            <span class="spinner-grow spinner-grow text-danger"></span>
+                        </h2>
+                        <p style="text-align: justify; color: black;">
+                        The goal of Memoji is to create an avatar that looks just like you.
+                        The Memoji builder in your Apple device lets you customize everything.
+                        Including skin tone, hair color, hairstyle, hat type, eye shape, and so much more to create a really
+                        realistic emoji. Momoji by Apple is a great feature to get users to form a stronger, more personal
+                        connection to their device. This means people will spend more time on their Apple products, which leads to
+                        increased profits for Apple—pretty smart!
+                        </p>
+                    </div>
+  
+                    <div class="col p-3" style="margin: auto; padding: 0%; margin-right: 20px; ;">
+                        <img
+                            class="w-100"
+                            src="https://image.shutterstock.com/image-photo/paris-france-sep-13-2017-600w-714994837.jpg">
+                        <button type="button" class="button btn "
+                            style="background-color: hsl(359, 100%, 62%, 1); color: #EFEFEF; text-align: center; width: 100%; padding: 2%; margin: auto; margin-top: 3%;">
+                            <strong
+                                style="font-family: 'Courier New', Courier, monospace; font-size: 20px; font-style: italic;">62010453
+                                Nontapan Rujirakal</strong>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content" id="62010465">
+                <div class="maleText">
+                    <div class="rahas">
+                        <h2><i>62010465</i></h2>
+                    </div>
+                    <div class="rowed">
+                        <img src="https://cdn.discordapp.com/attachments/793757885569564702/939553535626993714/malePhotoshoped.png">
+                        <div class = "miniColumned">
+                
+                            <div class = "miniRowed">
+                                <div class = "maleT1">
+                                    <p>
+                                        <b>
+                                            <i>NARAWICH  &nbsp;<span class="spinner-grow spinner-grow text-success"></span></i><br><br>
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi consequatur
+                                            nam earum inventore unde asperiores voluptate. Accusantium atque suscipit
+                                            placeat? Doloremque fugiat quia sapiente aliquid eaque iure vel tempora?
+                                            Mollitia.
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio adipisci 
+                                            doloribus ullam recusandae eligendi dolores fugit, dolorem quisquam maiores laborum.
+                                            Quia voluptate id quos autem iusto, ratione excepturi expedita fugit.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, numquam mollitia maiores 
+                                            ad cum omnis magni. Dolore quae enim magnam eum quis laborum, ipsam quidem, numquam quia, 
+                                            consequatur velit saepe!
+                                        </b>
+                                    </p>
+                                </div>
+                                <div class = "maleT2">
+                                    <p>
+                                        <b>
+                                            <i>YOUBUA &nbsp;<span class="spinner-grow spinner-grow text-success"></span></i><br><br>
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi consequatur
+                                            nam earum inventore unde asperiores voluptate. Accusantium atque suscipit
+                                            placeat? Doloremque fugiat quia sapiente aliquid eaque iure vel tempora?
+                                            Mollitia.
+                                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio adipisci 
+                                            doloribus ullam recusandae eligendi dolores fugit, dolorem quisquam maiores laborum.
+                                            Quia voluptate id quos autem iusto, ratione excepturi expedita fugit.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, numquam mollitia maiores 
+                                            ad cum omnis magni. Dolore quae enim magnam eum quis laborum, ipsam quidem, numquam quia, 
+                                            consequatur velit saepe!
+                                        </b>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div id = "maleCard" class="d-block border rounded-3 p-4 border-light" style= "background-color: rgb(1,200,1,0.1);">
+                                <b>
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed quod odio, officiis molestias blanditiis 
+                                    ducimus facere vel. Eius quod error sunt incidunt pariatur consequatur possimus officia nulla, fuga iure odit.
+                                </b>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content" id="62010494">
+                <div class="col-sm">
+                    <img style="height: 750px; margin-left: 25%; margin-top: 23%;" src = "https://cdn.discordapp.com/attachments/690673887687606352/939542808023433303/myself-sunmi.png"/>
+                </div>
+                <div class="col-sm" style="height: 100%;">
+                    <div class="d-flex flex-column flex-wrap justify-content-center " style="margin-top: 50%; padding-right: 10%; ">
+                        <div class="d-block border rounded-3 p-4 border-primary" style="background-color: rgb(0,0,0,0.4);">
+                            <h2 style="text-align: center;">62010494 Nitipat Boongate</h2>
+                            <h3 style="margin-left: 5%;">About Me!</h3>
+                            <p>
+                                A 3rd-year student in KMITL who is
+                                interested in Full-Stack Developer. Develops
+                                Mobile app with Flutter and Website with
+                                Javascript(Node.js, MernStack and others).
+                                Ready for Learning the new experiences and
+                                co-op working.
+                            </p>
+                            <ul style="margin-left: 5%;">
+                                <li>University : King Mongkut's Institute of Technology Ladkrabang</li>
+                                <li>Faculty : Faculty of Engineering</li>
+                                <li>Major : Computer Engineering</li>
+                                <li>Year : 3rd year</li>
+                            </ul>
+                            <div style="text-align: center; justify-content: space-between;">
+                                <button type="button" class="btn btn-outline-primary"><a href="https://www.facebook.com/belivepooh" target="_blank">Facebook</a></button>
+                                <button type="button" class="btn btn-outline-secondary"><a href="https://tasket.s3-ap-southeast-1.amazonaws.com/Student%20Resume/huEKfiQHGxYPsVpz9vucg5.pdf" target="_blank">Resume</a></button>
+                                <button type="button" class="btn btn-outline-success"><a href="https://github.com/nitipat009" target="_blank">Github</a></button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-content" id="62010496">
+                <div class="pure-container">
+                    <div class="pure-controller-container">
+                        <div></div>
+                        <div class="text-center">
+                            <img
+                                src="https://cdn.discordapp.com/attachments/939618238898253856/939635089900462180/unknown.png"
+                                style="
+                                    width: 300px;
+                                    border-width: 20px;
+                                    display: inline-block;
+                                    border: 5px solid transparent;
+                                    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+                                    border-image-slice: 1;" />
+                        </div>
+                        <div class="text-center">
+                            <span style="
+                                    width: 300px;
+                                    color: white;
+                                    font-family: 'Trocchi', serif;
+                                    font-weight: 500px;
+                                    font-size: 32px;
+                                    background: -webkit-linear-gradient(rgb(0, 148, 185), rgb(15, 0, 146));
+                                    -webkit-background-clip: text;
+                                    -webkit-text-fill-color: transparent;
+                                    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);">
+                                62010496  Nitipoom  Klaynium
+                            </span>
+                        </div>
+
+                        <div class="pure-controller text-center">
+                            <img src="https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/control-guide.png">
+                        </div>
+
+                        <div
+                            class="text-center"
+                            style="
+                                padding: 20px;
+                                color: white;">
+                            <span>
+                                This is mini game. You can move character by use 'AWSD' key on your keyboard to walk. Press w for go up. Press a for go left. Press s for go down. Press d for go right. You can walk on the floor but can not through the wall or some object. You can inspect somethings by press 'K'. When the object that can inspect on in front of you then press 'K' to inspect them.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pure-monitor">
+                        <div class="pure-map-container text-center">
+                            <div class="pure-map">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                                <img name="tile-block" width="48px" height="48px">
+                            </div>
+
+                            <div class="pure-character" id="pure-player">
+                                <img src="https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/stand-down.png" id="character-sprite" width="48px" height="48px">
+                            </div>
+
+                            <div class="pure-text-box" id="pure-text-box">
+                                <span>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                                </span>
+                            </div>
+
+                            
+                        </div>
+                        <div
+                            class="
+                                text-center"
+                            style="
+                                color:white;
+                                font-size: 40px;
+                                font-weight: bold;">
+                            Magazines are in bookshelf.
+                        </div>
+                    </div>
+
+                    <script>
+                        function getTime() {
+                            let ms = Date.now();
+                            return ms;
+                        }
+
+                        Array.prototype.reshape = function(rows, cols) {
+                            var copy = this.slice(0); // Copy all elements.
+                            this.length = 0; // Clear out existing array.
+                          
+                            for (var r = 0; r < rows; r++) {
+                              var row = [];
+                              for (var c = 0; c < cols; c++) {
+                                var i = r * cols + c;
+                                if (i < copy.length) {
+                                  row.push(copy[i]);
+                                }
+                              }
+                              this.push(row);
+                            }
+                        };
+
+                        var tileSet_temp = document.getElementsByName("tile-block");
+                        var tileSet = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []];
+                        var hitBox = [
+                            ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+                            ["X", "S", "S", "X", "S", "S", "S", "X", "X", "X", "S", "X", "X", "X", "X"],
+                            ["X", "S", "S", "X", "S", "S", "S", "O", "O", "X", "S", "X", "O", "X", "X"],
+                            ["X", "O", "O", "O", "O", "O", "O", "O", "O", "X", "O", "O", "O", "O", "X"],
+                            ["X", "X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X"],
+                            ["X", "X", "X", "X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X"],
+                            ["X", "X", "X", "X", "X", "X", "O", "O", "O", "X", "X", "X", "X", "X", "X"],
+                            ["X", "X", "X", "X", "X", "X", "O", "O", "O", "X", "X", "X", "X", "X", "X"],
+                            ["X", "X", "X", "X", "X", "X", "O", "O", "O", "X", "X", "S", "S", "X", "X"],
+                            ["X", "X", "X", "X", "O", "O", "O", "O", "O", "O", "X", "S", "S", "X", "X"],
+                            ["X", "X", "X", "X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X"],
+                            ["X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X"],
+                            ["X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X"],
+                            ["X", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "X"],
+                            ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"]];
+
+                        for (let i = 0 ; i < 225 ; i++) {
+                            var col = Math.floor(i % 15);
+                            tileSet[col].push(tileSet_temp[i]);
+                        }
+
+                        const src_directory = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/";
+
+                        const wood_floor = src_directory + "wood-floor.png";
+                        const wall_top = src_directory + "wall-top.png";
+                        const wall_left = src_directory + "wall-left.png";
+                        const wall_right = src_directory + "wall-right.png";
+                        const wall_bottom = src_directory + "wall-bottom.png";
+                        const corner_1 = src_directory + "corner-1.png";
+                        const corner_2 = src_directory + "corner-2.png";
+                        const corner_3 = src_directory + "corner-3.png";
+                        const corner_4 = src_directory + "corner-4.png";
+                        const corner_5 = src_directory + "corner-5.png";
+                        const corner_6 = src_directory + "corner-6.png";
+                        const corner_7 = src_directory + "corner-7.png";
+                        const corner_8 = src_directory + "corner-8.png";
+                        const large_bookshelf_1 = src_directory + "large_book_shelf-1.png";
+                        const large_bookshelf_2 = src_directory + "large_book_shelf-2.png";
+                        const large_bookshelf_3 = src_directory + "large_book_shelf-3.png";
+                        const large_bookshelf_4 = src_directory + "large_book_shelf-4.png";
+                        const bookshelf_1 = src_directory + "book-shelf-1.png";
+                        const bookshelf_2 = src_directory + "book-shelf-2.png";
+                        const table_flower = src_directory + "table-flower.png";
+                        const wardrobe_1_1 = src_directory + "wardrobe-1-1.png";
+                        const wardrobe_1_2 = src_directory + "wardrobe-1-2.png";
+                        const wallpaper_white = src_directory + "wallpaper-white.png";
+                        const wallpaper_white_bottom = src_directory + "wallpaper-white-bottom-1.png";
+                        const wall_left_right = src_directory + "wall_left_right.png";
+                        const corner_9 = src_directory + "corner-9.png";
+                        const corner_10 = src_directory + "corner-10.png";
+                        const bed_1 = src_directory + "bed-1.png";
+                        const bed_2 = src_directory + "bed-2.png";
+                        const medicine_cabinet_1 = src_directory + "medicine-cabinet-1.png";
+                        const medicine_cabinet_2 = src_directory + "medicine-cabinet-2.png";
+                        const crate_1 = src_directory + "crate-1.png";
+                        const crate_2 = src_directory + "crate-2.png";
+                        const large_crate_1 = src_directory + "large-crate-1.png";
+                        const large_crate_2 = src_directory + "large-crate-2.png";
+                        
+                        for (let x = 0 ; x < 15 ; x++) {
+                            for (let y = 0 ; y < 15 ; y++) {
+                                tileSet[x][y].src = wood_floor;
+                            }
+                        }
+
+                        for (let i = 0 ; i < 15 ; i++) {
+                            tileSet[0][i].src = wall_left;
+                            tileSet[i][0].src = wall_top;
+                            tileSet[14][i].src = wall_right;
+                            tileSet[i][14].src = wall_bottom;
+                        }
+                        
+                        tileSet[0][0].src = corner_1;
+                        tileSet[14][0].src = corner_2;
+                        tileSet[0][14].src = corner_3;
+                        tileSet[14][14].src = corner_4;
+
+                        tileSet[1][1].src = large_bookshelf_1;
+                        tileSet[2][1].src = large_bookshelf_2;
+                        tileSet[1][2].src = large_bookshelf_3;
+                        tileSet[2][2].src = large_bookshelf_4;
+
+                        tileSet[3][1].src = wardrobe_1_1;
+                        tileSet[3][2].src = wardrobe_1_2;
+
+                        tileSet[4][1].src = bookshelf_1;
+                        tileSet[4][2].src = bookshelf_2;
+
+                        tileSet[5][1].src = large_bookshelf_1;
+                        tileSet[6][1].src = large_bookshelf_2;
+                        tileSet[5][2].src = large_bookshelf_3;
+                        tileSet[6][2].src = large_bookshelf_4;
+
+                        tileSet[7][1].src = wallpaper_white;
+                        tileSet[7][2].src = wallpaper_white_bottom;
+                        tileSet[8][1].src = wallpaper_white;
+                        tileSet[8][2].src = wallpaper_white_bottom;
+
+                        tileSet[13][2].src = bed_1;
+                        tileSet[13][3].src = bed_2;
+
+                        tileSet[10][1].src = bookshelf_1;
+                        tileSet[10][2].src = bookshelf_2;
+
+                        tileSet[11][1].src = wallpaper_white;
+                        tileSet[11][2].src = table_flower;
+                        tileSet[12][1].src = wallpaper_white;
+                        tileSet[12][2].src = wallpaper_white_bottom;
+                        tileSet[13][1].src = wallpaper_white;
+                        
+                        tileSet[1][5].src = crate_1;
+                        tileSet[1][4].src = crate_1;
+                        tileSet[2][5].src = crate_1;
+                        tileSet[3][5].src = crate_2;
+
+                        tileSet[9][0].src = corner_9;
+                        tileSet[9][1].src = wall_left_right;
+                        tileSet[9][2].src = corner_10;
+                        tileSet[9][3].src = wallpaper_white;
+                        tileSet[9][4].src = wallpaper_white_bottom;
+
+                        tileSet[0][6].src = corner_3;
+                        tileSet[1][6].src = wall_bottom;
+                        tileSet[2][6].src = wall_bottom;
+                        tileSet[3][6].src = wall_bottom;
+                        tileSet[4][6].src = wall_bottom;
+                        tileSet[5][6].src = corner_6;
+
+                        tileSet[0][7].src = corner_1;
+                        tileSet[1][7].src = wall_top;
+                        tileSet[2][7].src = wall_top;
+                        tileSet[3][7].src = wall_top;
+                        tileSet[4][7].src = wall_top;
+                        tileSet[5][7].src = corner_8;
+
+                        tileSet[1][8].src = wallpaper_white;
+                        tileSet[2][8].src = wallpaper_white;
+                        tileSet[3][8].src = wallpaper_white;
+                        tileSet[4][8].src = wallpaper_white;
+                        tileSet[5][8].src = wallpaper_white;
+
+                        tileSet[4][9].src = wallpaper_white_bottom;
+                        tileSet[5][9].src = wallpaper_white_bottom;
+
+                        tileSet[1][9].src = large_crate_1;
+                        tileSet[1][10].src = large_crate_2;
+                        tileSet[2][9].src = large_crate_1;
+                        tileSet[2][10].src = large_crate_2;
+                        tileSet[3][9].src = large_crate_1;
+                        tileSet[3][10].src = large_crate_2;
+
+                        tileSet[9][6].src = corner_5;
+                        tileSet[10][6].src = wall_bottom;
+                        tileSet[11][6].src = wall_bottom;
+                        tileSet[12][6].src = wall_bottom;
+                        tileSet[13][6].src = wall_bottom;
+                        tileSet[14][6].src = corner_4;
+
+                        tileSet[9][7].src = corner_7;
+                        tileSet[10][7].src = wall_top;
+                        tileSet[11][7].src = wall_top;
+                        tileSet[12][7].src = wall_top;
+                        tileSet[13][7].src = wall_top;
+                        tileSet[14][7].src = corner_2;
+
+                        tileSet[9][8].src = wallpaper_white;
+
+                        tileSet[9][9].src = wallpaper_white_bottom;
+
+                        tileSet[10][8].src = wardrobe_1_1;
+                        tileSet[10][9].src = wardrobe_1_2;
+
+                        tileSet[11][8].src = large_bookshelf_1;
+                        tileSet[12][8].src = large_bookshelf_2;
+                        tileSet[11][9].src = large_bookshelf_3;
+                        tileSet[12][9].src = large_bookshelf_4;
+
+                        tileSet[13][8].src = medicine_cabinet_1;
+                        tileSet[13][9].src = medicine_cabinet_2;
+
+                        var pos_x = 7;
+                        var pos_y = 7;
+
+                        var face_x = 0;
+                        var face_y = 1;
+
+                        var x_time = getTime();
+                        var y_time = getTime();
+
+                        var isText_boxOpen = false;
+                        
+                        function move(x, y) {
+                            if (pos_x + x >= 0 && pos_x + x <= 14) {
+                                pos_x += x;
+                                var new_marginLeft = pos_x * 48;
+                                document.getElementById("pure-player").style.marginLeft = new_marginLeft.toString() + "px";
+                            }
+                            if (pos_y + y >= 0 && pos_y + y <= 14) {
+                                pos_y += y;
+                                var new_marginTop = pos_y * 48;
+                                document.getElementById("pure-player").style.marginTop = new_marginTop.toString() + "px";
+                            }
+                        }
+
+                        window.onkeydown = function(e) {
+                            var new_x_time = getTime();
+                            var new_y_time = getTime(); 
+                            var kc = e.keyCode;
+
+                            if (isText_boxOpen === false) {
+                                if (new_x_time - x_time >= 500) {
+                                    x_time = new_x_time;
+                                    if (kc === 65) {
+                                        face_y = 0;
+                                        face_x = -1;
+                                        setTimeout(function() {document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/stand-left.png";}, 400);
+                                        document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/walk-left.gif";
+                                        if (hitBox[pos_y][pos_x - 1] === "O") {
+                                            move(-1, 0);                           
+                                        }         
+                                    }
+                                    if (kc === 68) {
+                                        face_y = 0;
+                                        face_x = 1;
+                                        setTimeout(function() {document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/stand-right.png";}, 400);
+                                        document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/walk-right.gif";
+                                        if (hitBox[pos_y][pos_x + 1] === "O") {
+                                            move(1, 0);
+                                        }
+                                    }
+                                }
+                                if (new_y_time - y_time >= 500) {
+                                    y_time = new_y_time;
+                                    if (kc === 87) {
+                                        face_y = -1;
+                                        face_x = 0;
+                                        setTimeout(function() {document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/stand-up.png";}, 400);
+                                        document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/walk-up.gif";
+                                        if (hitBox[pos_y - 1][pos_x] === "O") {
+                                            move(0, -1);
+                                        }
+                                    }
+                                    
+                                    if (kc === 83) {
+                                        face_y = 1;
+                                        face_x = 0;
+                                        setTimeout(function() {document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/stand-down.png";}, 400);
+                                        document.getElementById("character-sprite").src = "https://raw.githubusercontent.com/NitipoomKlaynium/Software-Studio/main/Exercise%2003/walk-down.gif";
+                                        if (hitBox[pos_y + 1][pos_x] === "O") {
+                                            move(0, 1);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (kc === 75) {
+                                console.log(hitBox[pos_y + face_y][pos_x + face_x]);
+                                if (isText_boxOpen) {
+                                    document.getElementById("pure-text-box").style.opacity = "0";
+                                    isText_boxOpen = false;
+                                    console.log(isText_boxOpen);
+                                }
+                                else if (hitBox[pos_y + face_y][pos_x + face_x] === "S") {
+                                    document.getElementById("pure-text-box").style.opacity = "1";
+                                    isText_boxOpen = true;
+                                }
+                            }                            
+                        };
+
+                        document.getElementById("pure-text-box").style.opacity = "0";
+                        
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
