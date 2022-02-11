@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Gallery</title>
+  </head>
+
+  <style>
+    .btn {
+      border: none;
+      background: none;
+      color: #9898c9;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <h2>My First Javascript</h2>
+    <div>
+      <script>
+        colors = [
+          ["#EB9FA1", "#a2eb9f"],
+          ["#C0C0C0", "#1A3668"],
+          ["#1A3668", "#D6E9CA"],
+          ["#991218", "#FFF67F"],
+          ["#6A258A", "#F7AB00"],
+          ["#8DBCF4", "#f74d41"],
+        ];
+        function getDate() {
+          let date = document.getElementById("date");
+          const d = new Date();
+          date.value = d;
+          color = colors.shift();
+          colors.push(color);
+          date.style.backgroundColor = color[0];
+          date.style.color = color[1];
+        }
+      </script>
+      <input
+        type="button"
+        value="Click me to display Date and Time."
+        onclick="getDate()"
+        id="date"
+      />
+    </div>
+    <br />
+    <script type="text/javascript">
+      function getMember() {
+        let members = document.getElementById("members");
+        let displaySetting = members.style.display;
+        if (displaySetting == "none") {
+          members.style.display = "block";
+        } else {
+          members.style.display = "none";
+        }
+      }
+      function mouseOver() {
+        document.getElementById("members-button").style.cssText =
+          "color:#6A258A  ;background:#D6E9CA   ";
+        // button.style.color = "navy";
+        // button.style.background= "khaki";
+      }
+      function mouseOut() {
+        document.getElementById("members-button").style.cssText =
+          "color:#9898c9;background:none";
+        // button.style.color = "plum";
+        // button.style.background= "none";
+      }
+    </script>
+    <div>
+      <span
+        id="members-button"
+        class="btn"
+        onmouseenter="mouseOver()"
+        onmouseleave="mouseOut()"
+        onclick="getMember()"
+        >Members</span
+      >
+
+      <ul style="display: none" id="members">
+        <li>Kan Maksapsin, ID:62010052</li>
+        <li>Nathamon Boonprasert, ID:62010285</li>
+        <li>Nontapan Rujirakal, ID:62010453</li>
+        <li>Narawich Youbua, ID:62010465</li>
+        <li>Nitipat Boongate, ID:62010494</li>
+        <li>Nitipoom Klaynium, ID:62010496</li>
+      </ul>
+    </div>
+    <div>
+      <h1>Snapshots</h1>
+      <script type="text/javascript">
+        patrick =
+          "https://images.unsplash.com/photo-1627796795540-18e2db6d3908?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80";
+        astronaut =
+          "https://images.unsplash.com/photo-1620428268482-cf1851a36764?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1109&q=80";
+        guitar =
+          "https://images.unsplash.com/photo-1524650359799-842906ca1c06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80";
+        dango =
+          "https://images.unsplash.com/photo-1601317266542-4f4abae2cca4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1228&q=80";
+
+        img = [patrick, astronaut, guitar, dango];
+        function changeImg(index) {
+          document.getElementById("image").src = img[index];
+        }
+      </script>
+      <ul>
+        <li id="btn1" onclick="changeImg(0)">
+          <label class="btn">Patrick</label>
+        </li>
+        <li id="btn2" onclick="changeImg(1)">
+          <lable class="btn">Astronaut</lable>
+        </li>
+        <li id="btn3" onclick="changeImg(2)">
+          <lable class="btn">Guitar</lable>
+        </li>
+        <li id="btn4" onclick="changeImg(3)">
+          <label class="btn">Dango</label>
+        </li>
+      </ul>
+      <img
+        src="https://images.unsplash.com/photo-1517315003714-a071486bd9ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+        style="height: 500px"
+        id="image"
+      />
+    </div>
+  </body>
+</html>
