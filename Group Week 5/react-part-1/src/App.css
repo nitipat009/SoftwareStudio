@@ -6,11 +6,12 @@
 }
 .header{
   font-size: 40px;
+  font-weight: bold;
   color: white;
   margin: 30px;
 }
 
 #font-link{ 
-  font-family: 'Shrikhand', cursive;
+  font-family: 'Bungee Hairline', cursive;
 }
 

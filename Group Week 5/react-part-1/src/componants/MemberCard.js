@@ -6,8 +6,8 @@ function MemberCard(props) {
     <div className="card">
       <div className="top">
         <div className="top-left">
-          <h1 className="font-link">{props.firstname} {props.lastname}</h1>
-          <h2>{props.id}</h2>
+          <h1 id="fontM">{props.firstname} {props.lastname}</h1>
+          <h2 id="fontM">{props.id}</h2>
           <div dangerouslySetInnerHTML={{ __html: props.des }}>
             {/* {props.des} */}
           </div>
