@@ -29,6 +29,14 @@
   width: 230px;
   height: 230px;
 }
+
+
+.font-link{
+  font-family: 'Faster One', cursive;
+  color: rgb(168, 143, 96);
+}
+
+
 .bottom {
   display: flex;
   justify-content: center;
