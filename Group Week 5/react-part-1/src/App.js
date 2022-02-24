@@ -37,7 +37,7 @@ function App() {
       id: 62010453,
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio, molestias tempora quisquam explicabo consectetur? Corporis amet nulla consectetur numquam architecto ratione a libero! Debitis alias itaque, commodi maxime voluptas sit provident at aliquid cupiditate, explicabo molestiae eveniet obcaecati, ipsa tempora! Laboriosam, officiis ab? Sit, dolor laboriosam deleniti reprehenderit dolorem praesentium velit eaque nemo cumque asperiores debitis, perferendis nam non perspiciatis soluta eum aliquid odit est ipsam delectus quis? Cum recusandae quaerat id ea laboriosam pariatur consequuntur quos quas laudantium.",
       image:
-        "https://images.unsplash.com/photo-1635003913011-95971abba560?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=756&q=80",
+        "https://cdn.discordapp.com/attachments/793757885569564702/939068903961808986/MaleCool.jpg",
     },
     {
       firstname: "Nitipat",
