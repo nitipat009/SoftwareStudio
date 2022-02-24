@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App">
     
-      <div className="header">Group's Members</div>
+      <div className="header" id="font-link">Group's Members</div>
       <MemberCard
         firstname={members[0].firstname}
         lastname={members[0].lastname}
