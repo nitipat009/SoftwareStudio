@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.result-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 60px;
+    padding: 10px;
+    background-color: greenyellow;
+    border: solid violet 3px;
+    border-radius: 15px;
+    margin-inline: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: navy;
+   
+}
+button{
+    height: 45px;
+    font-size: medium;
+    padding: 10px;
+}

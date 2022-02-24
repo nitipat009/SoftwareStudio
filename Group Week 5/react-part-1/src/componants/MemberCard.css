@@ -1,0 +1,35 @@
+.card {
+  background-color: blanchedalmond;
+  width: 1000px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.4);
+  margin: 10px;
+  border: solid 1px black;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.top-left {
+  width: 75%;
+}
+.top-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top-right img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 230px;
+  height: 230px;
+}
+.bottom {
+  display: flex;
+  justify-content: center;
+}
