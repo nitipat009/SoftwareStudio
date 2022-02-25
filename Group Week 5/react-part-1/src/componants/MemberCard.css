@@ -36,6 +36,10 @@
   color: rgb(168, 143, 96);
 }
 
+#fontL{
+  font-family: 'Shippori Antique', sans-serif;
+}
+
 
 .bottom {
   display: flex;
