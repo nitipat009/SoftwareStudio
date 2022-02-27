@@ -21,7 +21,7 @@ function App() {
       description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio, molestias tempora quisquam explicabo consectetur? Corporis amet nulla consectetur numquam architecto ratione a libero! Debitis alias itaque, commodi maxime voluptas sit provident at aliquid cupiditate, explicabo molestiae eveniet obcaecati, ipsa tempora! Laboriosam, officiis ab? Sit, dolor laboriosam deleniti reprehenderit dolorem praesentium velit eaque nemo cumque asperiores debitis, perferendis nam non perspiciatis soluta eum aliquid odit est ipsam delectus quis? Cum recusandae quaerat id ea laboriosam pariatur consequuntur quos quas laudantium.",
       image:
-        "https://images.unsplash.com/photo-1634896941598-b6b500a502a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=756&q=80",
+        "https://cdn.discordapp.com/attachments/774503557852037130/947408066448613406/khaopod.jpg",
     },
     {
       firstname: "Nontapan",
