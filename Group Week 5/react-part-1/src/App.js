@@ -60,48 +60,16 @@ function App() {
     <div className="App">
     
       <div className="header" id="font-link">Group's Members</div>
+      {members.map((member) => (
       <MemberCard
-        firstname={members[0].firstname}
-        lastname={members[0].lastname}
-        id={members[0].id}
-        des={members[0].description}
-        image={members[0].image}
+        firstname={member.firstname}
+        lastname={member.lastname}
+        id={member.id}
+        des={member.description}
+        image={member.image}
       />
-      <MemberCard
-        firstname={members[1].firstname}
-        lastname={members[1].lastname}
-        id={members[1].id}
-        des={members[1].description}
-        image={members[1].image}
-      />
-      <MemberCard
-        firstname={members[2].firstname}
-        lastname={members[2].lastname}
-        id={members[2].id}
-        des={members[2].description}
-        image={members[2].image}
-      />
-      <MemberCard
-        firstname={members[3].firstname}
-        lastname={members[3].lastname}
-        id={members[3].id}
-        des={members[3].description}
-        image={members[3].image}
-      />
-      <MemberCard
-        firstname={members[4].firstname}
-        lastname={members[4].lastname}
-        id={members[4].id}
-        des={members[4].description}
-        image={members[4].image}
-      />
-      <MemberCard
-        firstname={members[5].firstname}
-        lastname={members[5].lastname}
-        id={members[5].id}
-        des={members[5].description}
-        image={members[5].image}
-      />
+      ))}
+     
     </div>
   );
 }
