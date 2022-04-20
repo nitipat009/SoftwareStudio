@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useLocation , useLayoutEffect} from "react";
 import { Link } from "react-router-dom";
 import { isAuth } from "../helpers/auth";
 import { NavLink } from "react-router-dom";
@@ -13,17 +13,32 @@ function Navbar() {
   // if (isAuth()) {
   //   message = isAuth().username;
   // }
+  const [state,setState] = useState('Home');
+  const [pathlink,setPath] = useState('');
+  const handlechange = text => () =>{
+    setState(text)
+  }
+
+  useLayoutEffect(() => {
+    const path = location.pathname;
+    setPath(path)
+  },[state])
+  
   return (
-    <div className="flex">
-      <nav className="h-[8em] w-full flex flex-row bg-white m-auto p-auto items-center pt-2 pl-16 content-center ">
+    <div className="flex w-full absolute  z-[9999]">
+      <nav className="h-[8em] w-full flex flex-row bg-white bg-opacity-60 m-auto p-auto items-center pt-2 pl-16 content-center  ">
         {/* Logo */}
         <div className="basis-1/2">
           <h1 className="text-6xl">ArjanRed</h1>
         </div>
 
+
+      
         {/* Nav */}
-        <ul className="flex flex-row space-x-[0.5em] text-xl items-center">
-          <li><NavLink to={"/"}>Home</NavLink></li>
+        <ul id = "mobile-menu" className="hidden md:flex md:flex-row md:space-x-[0.5em] md:text-xl md:items-center">
+          <li>
+            <NavLink to={"/"} onClick={handlechange("Home")}>Home</NavLink>
+          </li>
           <div
             style={{
               width: "46px",
@@ -35,7 +50,9 @@ function Navbar() {
               background: "#000000",
             }}
           ></div>
-          <li><NavLink to={"/Aboutus"}>About us</NavLink></li>
+          <li>
+            <NavLink to={"/Aboutus"} onClick={handlechange("Aboutus")}>About us</NavLink>
+          </li>
           <div
             style={{
               width: "46px",
@@ -47,7 +64,9 @@ function Navbar() {
               background: "#000000",
             }}
           ></div>
-          <li><NavLink to={"/Blog"}>Blog</NavLink></li>
+          <li>
+            <NavLink to={"/Blog"} onClick={handlechange("Blog")}>Blog</NavLink>
+          </li>
           <div
             style={{
               width: "46px",
@@ -59,13 +78,15 @@ function Navbar() {
               background: "#000000",
             }}
           ></div>
-          <li><NavLink to={"/Contacts"}>Contacts</NavLink></li>
+          <li>
+            <NavLink to={"/Contacts"} onClick={handlechange("Contacts")} >Contacts</NavLink>
+          </li>
           {/* Button */}
         </ul>
         {/* Button */}
-        <div className="w-40 h-8 bg-orange inline-flex items-center text-white text-xl space-x-[0.5em] m-auto p-auto justify-between pl-2 pr-2">
+        <div className="w-40 h-8 bg-orange inline-flex items-center text-white text-xl space-x-[0.5em] m-auto p-auto justify-between pl-2 pr-2 rounded">
           {/* Login */}
-          <NavLink to={"/Login"}>Login</NavLink>
+          <NavLink to={"/Login"} onClick={handlechange("Login")} className={pathlink==="/Login" ? "bg-white bg-opacity-30 rounded" : ""}>Login</NavLink>
           {/* Line */}
           <div
             className="h-6"
@@ -77,11 +98,13 @@ function Navbar() {
             }}
           ></div>
           {/* Register */}
-          <NavLink to={"/Register"}>Register</NavLink>
+          <NavLink to={"/Register"} onClick={handlechange("Register")} className={pathlink==="/Register" ? "bg-white bg-opacity-30 rounded" : ""}>Register</NavLink>
         </div>
+
+        
       </nav>
     </div>
   );
 }
 
-export default Navbar
+export default Navbar;

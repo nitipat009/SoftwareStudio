@@ -1,6 +1,6 @@
 import { data } from "autoprefixer";
 import React from "react";
-
+import imgUrl from '../assets/bg/home.png'
 import Swipergrid from "../components/Swipergrid";
 
 function Home() {
@@ -9,11 +9,19 @@ function Home() {
   return (
     <div className="flex flex-col h-full w-full">
       {/* Section Create Blog */}
-      <section className="flex h-screen">This's home</section>
+      <section className="flex h-screen">
+        <div className = "flex w-full h-full items-center">
+          <img className = "w-full h-full object-cover"src = {imgUrl}></img>
+          {/* Welcome Home */}
+          <div className="flex absolute h-[2em] p-12 bg-white bg-opacity-60 text-slate text-6xl underline items-center underline-offset-8">
+            <h1>CREATE YOUR BLOG</h1>
+          </div>
+        </div>
+      </section>
       {/* Popular Blogs */}
       <section className="flex flex-col h-screen gap-24">
-        <div className="flex justify-center mt-24">
-          <h1>POPULAR BLOGS</h1>
+        <div className="flex justify-center mt-12">
+          <h1 className="font-roboto text-3xl font-bold">POPULAR BLOGS</h1>
         </div>
         <div className="flex ml-32 mr-32">
           <Swipergrid
@@ -29,8 +37,8 @@ function Home() {
       </section>
       {/* Newly Blogs */}
       <section className="flex flex-col h-screen gap-24 bg-orange text-white">
-        <div className="flex justify-center mt-24">
-          <h1>NEWLY BLOGS</h1>
+        <div className="flex justify-center mt-12">
+          <h1 className="font-roboto text-3xl font-bold">NEWLY BLOGS</h1>
         </div>
         <div className="flex ml-32 mr-32">
           <Swipergrid
