@@ -29,6 +29,7 @@ function Login() {
     e.preventDefault();
 
     if (handleValidation()) {
+      
       toast.success("Welcome! " + user.username, {
         position: toast.POSITION.TOP_RIGHT,
       });

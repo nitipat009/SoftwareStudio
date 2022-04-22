@@ -2,7 +2,7 @@ import { data } from "autoprefixer";
 import React from "react";
 import imgUrl from '../assets/bg/home.png'
 import Swipergrid from "../components/Swipergrid";
-
+import { NavLink } from "react-router-dom";
 function Home() {
   let datas = ["Slide1", "Slide2", "Slide3", "Slide4", "Slide5", "Slide6"];
 
@@ -13,8 +13,8 @@ function Home() {
         <div className = "flex w-full h-full items-center">
           <img className = "w-full h-full object-cover"src = {imgUrl}></img>
           {/* Welcome Home */}
-          <div className="flex absolute h-[2em] p-12 bg-white bg-opacity-60 text-slate text-6xl underline items-center underline-offset-8">
-            <h1>CREATE YOUR BLOG</h1>
+          <div className="flex absolute h-[2em] p-12 bg-white bg-opacity-60 text-slate text-3xl underline items-center underline-offset-8">
+          <NavLink to={"/Createblog"}><h1>CREATE YOUR BLOG</h1></NavLink>
           </div>
         </div>
       </section>

@@ -25,7 +25,7 @@ function Navbar() {
   },[state])
   
   return (
-    <div className="flex w-full absolute  z-[9999]">
+    <div className="flex w-full absolute vsz-[9999] ">
       <nav className="h-[8em] w-full flex flex-row bg-white bg-opacity-60 m-auto p-auto items-center pt-2 pl-16 content-center  ">
         {/* Logo */}
         <div className="basis-1/2">

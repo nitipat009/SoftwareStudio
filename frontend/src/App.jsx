@@ -14,9 +14,11 @@ import Contacts from "./pages/Contacts";
 import Aboutus from "./pages/Aboutus";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CreateBlog from "./pages/CreateBlog";
+
 
 function App() {
-  const notify = () => toast("Wow so easy!");
+  
   return (
     <>
       <Navbar />
@@ -27,6 +29,7 @@ function App() {
         <Route path={"/Aboutus"} element={<Aboutus />} />
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/Register"} element={<Register />} />
+        <Route path={"/Createblog"} element={<CreateBlog/>}/>
       </Routes>
       <ToastContainer />
     </>

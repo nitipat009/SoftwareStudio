@@ -60,10 +60,10 @@ function Register() {
         <div className="flex w-full h-full p-24">
           <form
             action="#"
-            className="flex flex-col w-full h-full justify-center gap-5 text-xl"
+            className="flex flex-col w-full h-full justify-center gap-2 text-xl"
             onSubmit={contactSubmit}
           >
-            <h1 className="text-3xl font-bold">Register</h1>
+            <h1 className="text-3xl font-bold ">Register</h1>
             <h3>Username</h3>
             <input
               id="username"
