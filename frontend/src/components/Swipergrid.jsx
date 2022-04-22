@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+import { Autoplay,Pagination, Navigation } from "swiper";
 
 function Swipergrid({num_view,space,group_slide,loop,pagination,datas,isOrange}) {
   return (
@@ -18,6 +18,10 @@ function Swipergrid({num_view,space,group_slide,loop,pagination,datas,isOrange})
         spaceBetween={space}
         slidesPerGroup={group_slide}
         loop={loop}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         loopFillGroupWithBlank={true}
         pagination={{
           clickable: pagination,
@@ -28,7 +32,7 @@ function Swipergrid({num_view,space,group_slide,loop,pagination,datas,isOrange})
               slidesPerView: num_view,
             }
           }}
-        modules={[Pagination, Navigation]}
+        modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         {datas.map((data) => <SwiperSlide><div className={isOrange ? "flex bg-orange h-[24em] justify-center items-center mb-10" : "flex bg-white h-[24em] justify-center items-center mb-10"}>{data}</div></SwiperSlide>)}

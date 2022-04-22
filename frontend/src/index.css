@@ -75,3 +75,10 @@ h6 {
   margin-right: 0;
   font-weight: bold;
 }
+
+@media (max-width : 768px) {
+  .mobile-screen {
+    visibility: hidden;
+  }
+
+}
