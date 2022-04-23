@@ -34,13 +34,13 @@ function Navbar() {
       <nav className="h-[8em] w-full flex flex-row bg-white bg-opacity-60 m-auto p-auto items-center pt-2 pl-16 content-center  ">
         {/* Logo */}
         <div className="basis-1/2">
-          <h1 className="text-6xl">ArjanRed</h1>
+          <h1 className="text-4xl md:text-6xl">ArjanRed</h1>
         </div>
         {/* Button */}
         <button
           data-collapse-toggle="mobile-menu"
           type="button"
-          class="inline-flex items-center p-2 ml-3 text-sm text-white rounded-lg md:hidden bg-orange"
+          class="absolute items-center right-0 p-2 ml-3 text-sm text-white rounded-lg md:hidden bg-orange"
           aria-controls="mobile-menu"
           aria-expanded="false"
           onClick={() => setShowM_Nav(!showM_Nav)}
@@ -73,7 +73,7 @@ function Navbar() {
         </button>
 
         {/* Nav */}
-        <div id="mobile-menu" className={(showM_Nav ? "visible" : "hidden " ) + "w-full  md:flex md:w-auto"}>
+        <div id="mobile-menu" className={(showM_Nav ? "visible " : "hidden " ) + "  nav-mobile-screen md:w-full  md:flex md:w-auto"}>
           <ul className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl md:items-center" aria-labelledby="dropdownButton">
             <li>
               <NavLink to={"/"} onClick={handlechange("Home")} className="block">
@@ -92,8 +92,8 @@ function Navbar() {
               }}
             ></div>
             <li>
-              <NavLink to={"/Aboutus"} onClick={handlechange("Aboutus")}>
-                About us
+              <NavLink to={"/Blog"} onClick={handlechange("Blog")}>
+                Blog
               </NavLink>
             </li>
             <div className={"mobile-screen"}
@@ -107,9 +107,10 @@ function Navbar() {
                 background: "#000000",
               }}
             ></div>
+            
             <li>
-              <NavLink to={"/Blog"} onClick={handlechange("Blog")}>
-                Blog
+              <NavLink to={"/Aboutus"} onClick={handlechange("Aboutus")}>
+                About us
               </NavLink>
             </li>
             <div
@@ -124,11 +125,6 @@ function Navbar() {
                 background: "#000000",
               }}
             ></div>
-            <li>
-              <NavLink to={"/Contacts"} onClick={handlechange("Contacts")}>
-                Contacts
-              </NavLink>
-            </li>
 
             <li className="md:hidden">
               <NavLink to={"/Login"} onClick={handlechange("Login")}>

@@ -25,14 +25,15 @@ function Login() {
     return true;
   };
 
-  const contactSubmit = (e) => {
+  const requestlogin = async() => {
+    // Login
+  }
+
+  const contactSubmit = async(e) => {
     e.preventDefault();
 
     if (handleValidation()) {
-      
-      toast.success("Welcome! " + user.username, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      const res = await toast.promise(requestlogin,{pending : "Pending..." , error: 'Login Failed!' , success : "Welcome! " + user.username})
     } else {
       toast.warn("Please Fill All Fields.", {
         position: toast.POSITION.TOP_RIGHT,

@@ -34,7 +34,12 @@ function Register() {
     return true;
   };
 
-  const contactSubmit = (e) => {
+
+  const requestRegister = async() => {
+    // Backend
+  }
+
+  const contactSubmit = async(e) => {
     e.preventDefault();
 
     if (handleValidation()) {
@@ -43,9 +48,7 @@ function Register() {
           position: toast.POSITION.TOP_RIGHT,
         });
       } else {
-        toast.success("Thank to join us!", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        const res = await toast.promise(requestRegister,{pending : "Pending..." , error: 'Registor Failed!' , success : "Thank to join us!"})
       }
     } else {
       toast.warn("Please Fill All Fields.", {

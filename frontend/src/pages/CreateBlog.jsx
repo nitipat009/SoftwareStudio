@@ -1,5 +1,7 @@
 import React, { Component, useRef, useCallback, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
+// Editor JS
 import Embed from "@editorjs/embed";
 import Table from "@editorjs/table";
 import Paragraph from "@editorjs/paragraph";
@@ -16,8 +18,10 @@ import CheckList from "@editorjs/checklist";
 import Delimiter from "@editorjs/delimiter";
 import InlineCode from "@editorjs/inline-code";
 import SimpleImage from "@editorjs/simple-image";
-
 import { createReactEditorJS } from "react-editor-js";
+
+
+import uploadimg from "../hooks/uploadimg";
 import axios from "axios";
 
 function CreateBlog() {
@@ -35,28 +39,12 @@ function CreateBlog() {
       config: {
         uploader: {
           async uploadByFile(file) {
-            const fd = new FormData();
-            fd.set("key", "663c09b925876925e4457bca273af1f8");
-            fd.append("image", file);
-            const res = await axios.post("https://api.imgbb.com/1/upload", fd);
-            return {
-              success: 1,
-              file: {
-                url: res.data.data.image.url,
-              },
-            };
+            const res = await uploadimg(file)
+            return res
           },
           async uploadByUrl(file) {
-            const fd = new FormData();
-            fd.set("key", "663c09b925876925e4457bca273af1f8");
-            fd.append("image", file);
-            const res = await axios.post("https://api.imgbb.com/1/upload", fd);
-            return {
-              success: 1,
-              file: {
-                url: res.data.data.image.url,
-              },
-            };
+            const res = await uploadimg(file)
+            return res
           },
         },
       },
@@ -208,7 +196,8 @@ function CreateBlog() {
 
 
   const handleSave = useCallback(async () => {
-    const savedData = await editorCore.current.save();
+    const savedData = await toast.promise(editorCore.current.save(),{pending : "Pending..." , error: 'Wrong Format!' , success : "Prefered to create your Blog!"})
+    // Backend
     console.log(savedData);
   }, []);
   
