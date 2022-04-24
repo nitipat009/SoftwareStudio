@@ -22,7 +22,7 @@ function Home() {
           <img className="w-full h-full object-cover" src={imgUrl}></img>
           {/* Welcome Home */}
           <div className="flex absolute h-[2em] p-12 bg-white bg-opacity-60 text-slate md:text-3xl underline items-center underline-offset-8">
-            <NavLink to={"/Createblog"}>
+            <NavLink to={"/Createblog"} class="drop-shadow-xl hover:text-[#ff9900]" style={{transitionDuration: "0.3s"}}>
               <h1>CREATE YOUR BLOG</h1>
             </NavLink>
           </div>
