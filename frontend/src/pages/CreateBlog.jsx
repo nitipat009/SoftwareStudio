@@ -1,6 +1,6 @@
 import React, { Component, useRef, useCallback, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
+import { Navigator } from "react-router-dom";
 // Editor JS
 import Embed from "@editorjs/embed";
 import Table from "@editorjs/table";
@@ -199,6 +199,7 @@ function CreateBlog() {
     const savedData = await toast.promise(editorCore.current.save(),{pending : "Pending..." , error: 'Wrong Format!' , success : "Prefered to create your Blog!"})
     // Backend
     console.log(savedData);
+    
   }, []);
   
   return (
