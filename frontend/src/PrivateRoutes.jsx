@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import React,{useEffect} from "react";
 function PrivateRoute({auth}){
     useEffect(()=>{
+        if(auth == false)
         toast.error("Permission Denied! Try to login!")
     },[])
     

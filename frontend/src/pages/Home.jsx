@@ -3,6 +3,8 @@ import imgUrl from "../assets/bg/home1.jpg";
 import Swipergrid from "../components/Swipergrid";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+
+
 function Home() {
   let datas = ["Slide1", "Slide2", "Slide3", "Slide4", "Slide5", "Slide6"];
 

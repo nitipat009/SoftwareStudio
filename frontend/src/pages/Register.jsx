@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import imgUrl from "../assets/bg/Login.png";
 import { ToastContainer, toast } from "react-toastify";
+import {authenticate} from '../helpers/auth';
+import axios from "axios";
+
+
 function Register() {
   const [user, setUser] = useState({
     username: "",
@@ -37,6 +41,15 @@ function Register() {
 
   const requestRegister = async() => {
     // Backend
+    const res = await axios.post(`https://localhost:7198/api/Users`,{
+      username : user.username,
+      password : user.password,
+      confirmpassword : user.cf_password
+    },{
+      headers : {
+        'Accept' : 'application/json'
+      }
+    })
   }
 
   const contactSubmit = async(e) => {

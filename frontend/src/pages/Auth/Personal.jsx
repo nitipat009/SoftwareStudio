@@ -4,6 +4,7 @@ import Sidebar from "../../components/Sidebar";
 import { toast } from "react-toastify";
 import axios from "axios";
 import uploadimg from "../../hooks/uploadimg";
+import { isAuth } from "../../helpers/auth";
 
 function Personal() {
   const path = useLocation().pathname;
@@ -20,10 +21,13 @@ function Personal() {
   };
 
   const [data, setData] = useState({
-    id: "",
-    username: "",
-    role: "",
-    image: "",
+    id: isAuth().id,
+    username: isAuth().username,
+    password: isAuth().password,
+    confirmPassword: isAuth().confirmPassword,
+    img: isAuth().img === undefined ? null : isAuth().img,
+    isAdmin: isAuth().isAdmin,
+    isBan: isAuth().isBan,
   });
 
   const [onedit, setedit] = useState(false);
@@ -36,13 +40,36 @@ function Personal() {
     fetchData();
   }, []);
 
-  const fetchData = async () => {};
+  const fetchData = async () => {
+    var preview = document.getElementById("preview");
+    if (isAuth().img !== null || isAuth().img !== undefined) {
+      preview.src = isAuth().img;
+    }
+  };
 
   const saveData = async () => {
     // Setup Image
-    const img_url = await uploadimg(file);
+    if (file !== null) {
+      const img_url = await uploadimg(file);
+      // Save to Backend
 
-    // Save to Backend
+      const res = await axios.put(
+        `https://localhost:7198/api/Users/${data.id}`,
+        {
+          id: data.id,
+          username: data.username,
+          password: data.password,
+          confirmPassword: data.confirmPassword,
+          img: img_url.file.url,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+          }
+        }
+      );
+      updateUser(data)
+    }
   };
 
   const handleEdit = async () => {
@@ -127,7 +154,7 @@ function Personal() {
                 <input
                   type={"text"}
                   id="role"
-                  value={data.role}
+                  value={data.isAdmin === "True" ? "Admin" : "User"}
                   className="p-2 border-b-2 border-black required:border-rose-500 required:rounded bg-transparent"
                   readOnly={true}
                 />

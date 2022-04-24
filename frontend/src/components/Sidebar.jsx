@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import {isAuth} from '../helpers/auth'
 function Sidebar({ pathname }) {
-  console.log(pathname)
+
+  const [isadmin,setAdmin] = useState(false)
+  useEffect(()=>{
+    (isAuth().isAdmin === "True")?setAdmin(true) :setAdmin(false)
+  },[])
   return (
     <div class="max-w-2xl mx-auto h-screen bg-orange mt-64">
       <aside class="w-54 h-full" aria-label="Sidebar">
@@ -58,7 +63,7 @@ function Sidebar({ pathname }) {
                 </span>
               </NavLink>
             </li>
-            <li>
+            <li className={(isadmin ?"visible" :  "hidden" )}>
               <NavLink
                 to={"/Dashboard"}
                 className={(pathname === "/Dashboard" ? "bg-amber-600 " : " ") + "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white"}

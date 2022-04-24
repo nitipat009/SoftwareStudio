@@ -1,15 +1,20 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Sidebar from "../../components/Sidebar";
-
+import { isAuth, updateUser } from "../../helpers/auth";
 function ChangePassword() {
   const path = useLocation().pathname;
   const [data, setData] = useState({
-    id: "",
+    id: isAuth().id,
+    username: isAuth().username,
     old_password: "",
-    new_password: "",
-    cf_password: "",
+    password: "",
+    confirmPassword: "",
+    img: isAuth().img === undefined ? null : isAuth().img,
+    isAdmin: isAuth().isAdmin,
+    isBan: isAuth().isBan,
   });
 
   const handleData = (text) => (e) => {
@@ -19,20 +24,20 @@ function ChangePassword() {
   const handleValidation = () => {
     if (
       data.old_password.length === 0 ||
-      data.new_password.length === 0 ||
-      data.cf_password.length === 0
+      data.password.length === 0 ||
+      data.confirmPassword.length === 0
     ) {
       if (data.old_password.length === 0) {
         document
           .getElementById("old_password")
           .setAttribute("required", "true");
       }
-      if (data.new_password.length === 0) {
+      if (data.password.length === 0) {
         document
           .getElementById("new_password")
           .setAttribute("required", "true");
       }
-      if (data.cf_password.length === 0) {
+      if (data.confirmPassword.length === 0) {
         document.getElementById("cf_password").setAttribute("required", "true");
       }
 
@@ -42,7 +47,7 @@ function ChangePassword() {
       return false;
     }
 
-    if (data.new_password !== data.cf_password) {
+    if (data.password !== data.confirmPassword) {
       toast.warn("Password doesn't match!", {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -52,7 +57,36 @@ function ChangePassword() {
     return handlesave();
   };
 
-  const requestChange = async () => {};
+  const requestChange = async () => {
+    console.log(data)
+    const res = await axios.put(
+      `https://localhost:7198/api/Users/UpdatePassword/${data.old_password}`,
+      {
+        id: data.id,
+        username: data.username,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+        img: data.img,
+        isAdmin: data.isAdmin,
+        isBan: data.isBan,
+      },
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    updateUser({
+      id: data.id,
+      username: data.username,
+      password: data.password,
+      confirmPassword: data.confirmPassword,
+      img: data.img,
+      isAdmin: data.isAdmin,
+      isBan: data.isBan,
+    });
+  };
 
   const handlesave = async () => {
     const res = await toast.promise(requestChange, {
@@ -90,8 +124,8 @@ function ChangePassword() {
                 <input
                   type={"password"}
                   id="new_password"
-                  value={data.new_password}
-                  onChange={handleData("new_password")}
+                  value={data.password}
+                  onChange={handleData("password")}
                   className="p-2 border-b-2 border-black required:border-rose-500 required:rounded bg-transparent"
                 />
               </div>
@@ -103,8 +137,8 @@ function ChangePassword() {
                 <input
                   type={"password"}
                   id="cf_password"
-                  value={data.cf_password}
-                  onChange={handleData("cf_password")}
+                  value={data.confirmPassword}
+                  onChange={handleData("confirmPassword")}
                   className="p-2 border-b-2 border-black required:border-rose-500 required:rounded bg-transparent"
                 />
               </div>
