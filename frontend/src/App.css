@@ -147,7 +147,9 @@ button {
             translate3d(300,0,0)
             rotate(-50deg);
     }
-    
+    80% {
+      opacity: 1;
+    }
     100% {
         -webkit-transform:
             translate3d(-350px,700px,0)
@@ -162,7 +164,9 @@ button {
             translate3d(0,0,0)
             rotate(-20deg);
     }
-    
+    80% {
+      opacity: 1;
+    }
     100% {
         -webkit-transform:
             translate3d(-230px,640px,0)
@@ -177,7 +181,9 @@ button {
             translate3d(0,0,0)
             rotate(240deg);
     }
-    
+    80% {
+      opacity: 1;
+    }
     100% {
         -webkit-transform:
             translate3d(-400px,680px,0)
