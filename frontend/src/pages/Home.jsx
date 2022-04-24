@@ -51,11 +51,11 @@ function Home() {
           </div>
           {/* CirCle */}
           <NavLink to={"/Createblog"}>
-          <div className="static">
-            <div className="absolute bg-white w-8 h-1 right-10 mt-[1.9em] z-[1]"/>
-            <div className="absolute bg-white w-1 h-8 right-[3.4em] mt-4 z-[2]"/>
-            <div className="absolute right-0 h-16 w-16 rounded-full bg-orange mr-6 z-[0]" />
-          </div>
+              <div className="fixed bottom-20 opacity-70 hover:opacity-100 hover:pulse" style={{transition: "all 0.4s"}}>
+                <div className="absolute bg-white w-8 h-1 right-10 mt-[1.9em] z-[1]"/>
+                <div className="absolute bg-white w-1 h-8 right-[3.4em] mt-4 z-[2]"/>
+                <div className="absolute right-0 h-16 w-16 rounded-full bg-[#ff9600] mr-6 z-[0] shadow-xl drop-shadow-2xl" />
+              </div>
           </NavLink>
         </div>
       </section>
@@ -79,14 +79,6 @@ function Home() {
           <div className="flex flex-row w-full items-center justify-center">
           <NavLink to={"/Blog"}><h3 className="underline underline-offset-1 ">More</h3></NavLink>
           </div>
-          {/* CirCle */}
-          <NavLink to={"/Createblog"}>
-          <div className="static">
-            <div className="absolute bg-orange w-8 h-1 right-10 mt-[1.9em] z-[1]"/>
-            <div className="absolute bg-orange w-1 h-8 right-[3.4em] mt-4 z-[2]"/>
-            <div className="absolute right-0 h-16 w-16 rounded-full bg-white mr-6 z-[0]" />
-          </div>
-          </NavLink>
         </div>
       </section>
     </div>
