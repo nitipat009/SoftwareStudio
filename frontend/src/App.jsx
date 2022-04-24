@@ -22,6 +22,7 @@ import Dashboard from "./pages/Auth/Dashboard";
 import Logout from "./pages/Auth/Logout";
 import OneBlog from "./pages/OneBlog";
 import CreateBlogEasy from "./pages/CreateBlogEasy";
+import Leaf from './pages/Leaf'
 
 // helpers
 import { isAuth } from "./helpers/auth";
@@ -53,6 +54,8 @@ function App() {
           <Route path={"Logout"} element={<Logout />} />
         </Route>
       </Routes>
+      <Leaf />
+      <Leaf />
       <ToastContainer />
     </>
   );
