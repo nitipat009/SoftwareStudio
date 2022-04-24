@@ -10,6 +10,7 @@ function Home() {
 
 
   const [data,setData] = useState([])
+  const [reverse,setReverse] = useState([])
   useEffect(()=>{
     fetchData()
   },[])
@@ -20,13 +21,13 @@ function Home() {
       }
     })
     setData(res.data)
-    console.log(res.data)
+    setReverse(res.data.reverse())
   }
 
   function comparator(a, b) {
-    if (a.dataset.likes < b.dataset.likes)
+    if (a.likes < b.likes)
         return -1;
-    if (a.dataset.likes > b.dataset.likes)
+    if (a.likes > b.likes)
         return 1;
     return 0;
   }
@@ -88,7 +89,7 @@ function Home() {
             group_slide={1}
             loop={true}
             pagination={true}
-            datas={data.reverse()}
+            datas={reverse}
           />
         </div>
         <div className="inline-flex">

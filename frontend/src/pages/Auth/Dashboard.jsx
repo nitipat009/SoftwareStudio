@@ -27,7 +27,7 @@ function Dashboard() {
         <Sidebar pathname={path} />
       </section>
       <section className="flex h-screen w-full">
-        <div class="text-gray-900 bg-gray-200 w-full h-full mt-32">
+        <div class="text-gray-900 bg-gray-200 w-full h-full mt-20">
           <div class="p-4 flex">
             <h1 class="text-3xl">Users</h1>
           </div>

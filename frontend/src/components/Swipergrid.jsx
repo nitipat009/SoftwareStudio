@@ -43,7 +43,7 @@ function Swipergrid({num_view,space,group_slide,loop,pagination,datas,isOrange})
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {datas.map((data) => <SwiperSlide><div className={isOrange ? "flex bg-orange h-[24em] justify-center items-center mb-10" : "flex bg-white h-[24em] justify-center items-center mb-10"}><a href={`/Blog/${data.id}`}><img src = {data.img}/></a></div></SwiperSlide>)}
+        {datas.map((data) => <SwiperSlide><div className={isOrange ? "flex bg-orange h-[24em] justify-center items-center mb-10" : "flex bg-white h-[24em] justify-center items-center mb-10 "}><a className="w-full h-full" href={`/Blog/${data.id}`}><img className="w-full h-full object-cover" src = {data.img}/></a></div></SwiperSlide>)}
       </Swiper>
     </>
   );

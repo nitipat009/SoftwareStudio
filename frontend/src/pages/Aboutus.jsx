@@ -84,7 +84,7 @@ function Aboutus() {
         <div class="p-4 shadow">
           <div class="h-48 mb-2 overflow-hidden rounded-lg shadow-lg md:h-80">
             <img
-              src="https://cdn.pixabay.com/photo/2018/01/15/07/52/woman-3083401__340.jpg"
+              src="https://media.discordapp.net/attachments/706113661986406480/967929783503704144/Artboard_5.png?"
               alt="Image"
               class="object-cover object-center w-full h-full"
             />
@@ -95,7 +95,7 @@ function Aboutus() {
               Nitipat Boongate
             </div>
             <p class="mb-3 text-sm text-gray-500 md:text-base md:mb-4">
-              62010434
+              62010494
             </p>
           </div>
         </div>

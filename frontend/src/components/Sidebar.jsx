@@ -8,7 +8,7 @@ function Sidebar({ pathname }) {
     (isAuth().isAdmin === "True")?setAdmin(true) :setAdmin(false)
   },[])
   return (
-    <div class="max-w-2xl mx-auto h-screen bg-orange mt-64">
+    <div class="max-w-2xl mx-auto h-screen bg-orange mt-40">
       <aside class="w-54 h-full" aria-label="Sidebar">
         <div class="px-3 py-4 overflow-y-auto rounded ">
           <ul class="space-y-2">

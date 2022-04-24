@@ -45,10 +45,11 @@ function App() {
           {/*Dev*/}
           <Route element={<PrivateRoute auth={isAuth().isAdmin === "True" ? true : false} />}>
             <Route path={"/Createblog"} element={<CreateBlogEasy />} />
+            <Route path={"/Dashboard"} element={<Dashboard />} />
           </Route>
           <Route path={"/Profile"} element={<Personal />} />
           <Route path={"/ChangePassword"} element={<ChangePassword />} />
-          <Route path={"/Dashboard"} element={<Dashboard />} />
+          
           <Route path={"Logout"} element={<Logout />} />
         </Route>
       </Routes>
