@@ -51,10 +51,10 @@ function Home() {
           </div>
           {/* CirCle */}
           <NavLink to={"/Createblog"}>
-          <div className="static">
+          <div className="fixed bottom-20 ">
             <div className="absolute bg-white w-8 h-1 right-10 mt-[1.9em] z-[1]"/>
             <div className="absolute bg-white w-1 h-8 right-[3.4em] mt-4 z-[2]"/>
-            <div className="absolute right-0 h-16 w-16 rounded-full bg-orange mr-6 z-[0]" />
+            <div className="absolute right-0 h-16 w-16 rounded-full bg-[#9a3412] mr-6 z-[0] shadow-xl " />
           </div>
           </NavLink>
         </div>
@@ -80,13 +80,13 @@ function Home() {
           <NavLink to={"/Blog"}><h3 className="underline underline-offset-1 ">More</h3></NavLink>
           </div>
           {/* CirCle */}
-          <NavLink to={"/Createblog"}>
+          {/* <NavLink to={"/Createblog"}>
           <div className="static">
             <div className="absolute bg-orange w-8 h-1 right-10 mt-[1.9em] z-[1]"/>
             <div className="absolute bg-orange w-1 h-8 right-[3.4em] mt-4 z-[2]"/>
             <div className="absolute right-0 h-16 w-16 rounded-full bg-white mr-6 z-[0]" />
           </div>
-          </NavLink>
+          </NavLink> */}
         </div>
       </section>
     </div>
