@@ -63,7 +63,7 @@ function AddComment(props) {
             ></textarea>
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end pr-3">
           <button className="inline-flex items-center h-10 px-3 mb-2 text-indigo-100 transition-colors duration-150 bg-orange rounded-lg focus:shadow-outline hover:bg-opacity-80 hover:shadow-md ">
             <span className=" font-semibold text-white " onClick={submitHandler}>Submit</span>
           </button>
