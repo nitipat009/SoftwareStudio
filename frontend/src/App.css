@@ -145,13 +145,13 @@ button {
     0% {
         -webkit-transform:
             translate3d(300,0,0)
-            rotate(0deg);
+            rotate(-50deg);
     }
     
     100% {
         -webkit-transform:
             translate3d(-350px,700px,0)
-            rotate(90deg);
+            rotate(170deg);
         opacity: 0;
     }
 }
@@ -166,7 +166,7 @@ button {
     100% {
         -webkit-transform:
             translate3d(-230px,640px,0)
-            rotate(-70deg);
+            rotate(-180deg);
         opacity: 0;
     }
 }
@@ -175,7 +175,7 @@ button {
      0% {
         -webkit-transform:
             translate3d(0,0,0)
-            rotate(90deg);
+            rotate(240deg);
     }
     
     100% {

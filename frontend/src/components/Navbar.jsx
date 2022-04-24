@@ -46,21 +46,22 @@ function Navbar() {
   })
   
   return (
-    <div className="flex w-full absolute vsz-[9999] ">
-      <nav className="h-[5em] w-full flex bg-white m-auto p-auto items-center pt-2 pl-16 pr-12 fixed z-50" id="nav" style={{backgroundColor:'rgba(255, 255, 255, 0.6)', transitionProperty: "all", transitionDuration: "0.6s"}}>
+    <div className="flex w-full absolute vsz-[9999]">
+      <nav className="h-[5em] w-full flex bg-white m-auto p-auto items-center pt-2 pl-16 pr-12 fixed z-50 drop-shadow-xl" id="nav" style={{backgroundColor:'rgba(255, 255, 255, 0.6)', transitionProperty: "all", transitionDuration: "0.6s"}}>
         {/* Logo */}
         <div className="" style={{width: "300px"}}>
           {/* <h1 className="text-4xl md:text-6xl">ArjanRed</h1> */}
-          <img className="w-full" src={logoUrl} />
+          <img className="" alt="logo" src={logoUrl} width="240" />
         </div>
         {/* Button */}
         <button
           data-collapse-toggle="mobile-menu"
           type="button"
-          class="absolute items-center right-0 p-2 ml-3 text-sm text-white rounded-lg md:hidden bg-orange "
+          class="absolute items-center right-10 p-2 ml-3 text-sm text-white rounded-lg md:hidden bg-orange opacity-80"
           aria-controls="mobile-menu"
           aria-expanded="false"
           onClick={() => setShowM_Nav(!showM_Nav)}
+          style={{marginTop: "-8px"}}
         >
           <span class="sr-only">Open main menu</span>
           <svg
@@ -92,7 +93,7 @@ function Navbar() {
         {/* Nav */}
         <div id="mobile-menu" className={(showM_Nav ? "visible " : "hidden " ) + "  nav-mobile-screen md:w-full md:flex md:items-end"}>
           <div style={{width: "60px"}}></div>
-          <ul className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl" aria-labelledby="dropdownButton">
+          <ul className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl" aria-labelledby="dropdownButton" style={{marginTop: "-8px"}}>
 
             <li>
               <NavLink className={"px-8 block hover:animate-pulse"} to={"/"} onClick={handlechange("Home")}>
