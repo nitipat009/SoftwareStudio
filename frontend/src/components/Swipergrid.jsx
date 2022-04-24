@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,8 +9,16 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Autoplay,Pagination, Navigation } from "swiper";
+import { NavLink } from "react-router-dom";
 
 function Swipergrid({num_view,space,group_slide,loop,pagination,datas,isOrange}) {
+  
+
+
+  
+  
+  
+  
   return (
     <>
       <Swiper
@@ -35,7 +43,7 @@ function Swipergrid({num_view,space,group_slide,loop,pagination,datas,isOrange})
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {datas.map((data) => <SwiperSlide><div className={isOrange ? "flex bg-orange h-[24em] justify-center items-center mb-10" : "flex bg-white h-[24em] justify-center items-center mb-10"}>{data}</div></SwiperSlide>)}
+        {datas.map((data) => <SwiperSlide><div className={isOrange ? "flex bg-orange h-[24em] justify-center items-center mb-10" : "flex bg-white h-[24em] justify-center items-center mb-10"}><a href={`/Blog/${data.id}`}><img src = {data.img}/></a></div></SwiperSlide>)}
       </Swiper>
     </>
   );

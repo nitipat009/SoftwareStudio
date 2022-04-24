@@ -26,11 +26,7 @@ import OneBlogEasy from "./pages/OneBlogEasy";
 // helpers
 import { isAuth } from "./helpers/auth";
 
-
-
 function App() {
-  
-
   return (
     <>
       <Navbar />
@@ -41,12 +37,13 @@ function App() {
         <Route path={"/Aboutus"} element={<Aboutus />} />
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/Register"} element={<Register />} />
-        <Route path={"/Blog/:id"} element={<OneBlogEasy/>}/>
+        <Route path={"/Blog/:id"} element={<OneBlogEasy />} />
         {/* Auth */}
         <Route element={<PrivateRoute auth={isAuth()} />}>
-          {" "}
           {/*Dev*/}
-          <Route path={"/Createblog"} element={<CreateBlogEasy />} />
+          <Route element={<PrivateRoute auth={isAuth().isAdmin === "True" ? true : false} />}>
+            <Route path={"/Createblog"} element={<CreateBlogEasy />} />
+          </Route>
           <Route path={"/Profile"} element={<Personal />} />
           <Route path={"/ChangePassword"} element={<ChangePassword />} />
           <Route path={"/Dashboard"} element={<Dashboard />} />

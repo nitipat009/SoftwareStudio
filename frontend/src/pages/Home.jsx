@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import imgUrl from "../assets/bg/home1.jpg";
 import Swipergrid from "../components/Swipergrid";
 import { NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 
 
 function Home() {
-  let datas = ["Slide1", "Slide2", "Slide3", "Slide4", "Slide5", "Slide6"];
 
-  const fetchData = () => {
 
+  const [data,setData] = useState([])
+  useEffect(()=>{
+    fetchData()
+  },[])
+  const fetchData = async() => {
+    const res = await axios.get(`https://localhost:7198/api/Blogs/Display`,{
+      headers : {
+        'Accept' : 'application/json'
+      }
+    })
+    setData(res.data)
+    console.log(res.data)
   }
 
-
+  function comparator(a, b) {
+    if (a.dataset.likes < b.dataset.likes)
+        return -1;
+    if (a.dataset.likes > b.dataset.likes)
+        return 1;
+    return 0;
+  }
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -40,7 +57,7 @@ function Home() {
             group_slide={1}
             loop={true}
             pagination={true}
-            datas={datas}
+            datas={data.sort(comparator)}
             isOrange={true}
           />
         </div>
@@ -71,7 +88,7 @@ function Home() {
             group_slide={1}
             loop={true}
             pagination={true}
-            datas={datas}
+            datas={data.reverse()}
           />
         </div>
         <div className="inline-flex">

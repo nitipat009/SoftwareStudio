@@ -1,30 +1,25 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import Usercard from "../../components/usercard";
 function Dashboard() {
   const path = useLocation().pathname;
 
-  const data = [
-    {
-      id: "1",
-      username: "Mheepu",
-      password: "1234",
-      role: "admin",
-    },
-    {
-      id: "2",
-      username: "aaa",
-      password: "1234",
-      role: "user",
-    },
-    {
-      id: "3",
-      username: "Mddddheepu",
-      password: "1234",
-      role: "admin",
-    },
-  ];
+
+  
+  useEffect(()=>{
+    fetchData()
+  },[])
+
+  const [data,setData] = useState([])
+
+
+
+  const fetchData = async() => {
+    const {data} = await axios.get(`https://localhost:7198/api/Users/`)
+    setData(data)
+  }
   return (
     <div className="flex flex-row-cols-2 h-full w-full">
       <section className="flex h-screen items-center">
@@ -43,11 +38,11 @@ function Dashboard() {
                   <th class="text-left p-3 px-5">Name</th>
                   <th class="text-left p-3 px-5">Password</th>
                   <th class="text-left p-3 px-5">Role</th>
+                  <th class="text-left p-3 px-5">Status</th>
                   <th></th>
                 </tr>
-                {data.map((data,index) => {
-                  console.log(index)
-                  return <Usercard index={index} id={data.id} username={data.username} password={data.password} role={data.role} />
+                {data.map((data) => {
+                  return <Usercard {...data} />
                 })}
                 
               </tbody>

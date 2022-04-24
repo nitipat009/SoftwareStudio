@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { isAuth } from "../helpers/auth";
 import uploadimg from "../hooks/uploadimg";
 
 function CreateBlogEasy() {
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
   const showPreview = (file) => (event) => {
     if (event.target.files.length > 0) {
       var src = URL.createObjectURL(event.target.files[0]);
@@ -53,6 +55,7 @@ function CreateBlogEasy() {
           success: "Add Blog Success!",
         }
       );
+      navigate(-1)
     }
   };
 

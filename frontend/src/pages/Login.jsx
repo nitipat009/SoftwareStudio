@@ -46,8 +46,13 @@ function Login() {
         'Accept' : 'application/json'
       }
     })
-    authenticate(res)
-    window.location.href = 'http://localhost:3000/';
+    if(res.data.isBan === "False"){
+      authenticate(res)
+      window.location.href = 'http://localhost:3000/';
+    }else{
+      throw 'You are Banned!'
+    }
+    
   }
 
   const contactSubmit = async(e) => {
