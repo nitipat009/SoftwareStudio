@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import imgUrl from "../assets/bg/Login.png";
 import { ToastContainer, toast } from "react-toastify";
+import {authenticate} from '../helpers/auth';
+import axios from "axios";
+
+
 function Register() {
   const [user, setUser] = useState({
     username: "",
@@ -34,7 +38,21 @@ function Register() {
     return true;
   };
 
-  const contactSubmit = (e) => {
+
+  const requestRegister = async() => {
+    // Backend
+    const res = await axios.post(`https://localhost:7198/api/Users`,{
+      username : user.username,
+      password : user.password,
+      confirmpassword : user.cf_password
+    },{
+      headers : {
+        'Accept' : 'application/json'
+      }
+    })
+  }
+
+  const contactSubmit = async(e) => {
     e.preventDefault();
 
     if (handleValidation()) {
@@ -43,9 +61,7 @@ function Register() {
           position: toast.POSITION.TOP_RIGHT,
         });
       } else {
-        toast.success("Thank to join us!", {
-          position: toast.POSITION.TOP_RIGHT,
-        });
+        const res = await toast.promise(requestRegister,{pending : "Pending..." , error: 'Registor Failed!' , success : "Thank to join us!"})
       }
     } else {
       toast.warn("Please Fill All Fields.", {

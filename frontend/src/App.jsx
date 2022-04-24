@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./PrivateRoutes";
 
 // components
 import Navbar from "./components/Navbar";
@@ -15,10 +16,18 @@ import Aboutus from "./pages/Aboutus";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateBlog from "./pages/CreateBlog";
+import Personal from "./pages/Auth/Personal";
+import ChangePassword from "./pages/Auth/ChangePassword";
+import Dashboard from "./pages/Auth/Dashboard";
+import Logout from "./pages/Auth/Logout";
+// helpers
+import { isAuth } from "./helpers/auth";
+
 
 
 function App() {
   
+
   return (
     <>
       <Navbar />
@@ -29,7 +38,16 @@ function App() {
         <Route path={"/Aboutus"} element={<Aboutus />} />
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/Register"} element={<Register />} />
-        <Route path={"/Createblog"} element={<CreateBlog/>}/>
+        {/* Auth */}
+        <Route element={<PrivateRoute auth={isAuth()} />}>
+          {" "}
+          {/*Dev*/}
+          <Route path={"/Createblog"} element={<CreateBlog />} />
+          <Route path={"/Profile"} element={<Personal />} />
+          <Route path={"/ChangePassword"} element={<ChangePassword />} />
+          <Route path={"/Dashboard"} element={<Dashboard />} />
+          <Route path={"Logout"} element={<Logout />} />
+        </Route>
       </Routes>
       <ToastContainer />
     </>

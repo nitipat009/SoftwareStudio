@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState , useContext } from "react";
 import imgUrl from "../assets/bg/Login.png";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
+import {isAuth ,authenticate} from '../helpers/auth';
+import { useNavigate } from "react-router-dom";
+
+
 function Login() {
+
+  
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
 
+
+  
   const handleData = (text) => (e) => {
     setUser({ ...user, [text]: e.target.value });
   };
@@ -24,15 +34,27 @@ function Login() {
 
     return true;
   };
+  
+  const requestlogin = async() => {
+    // Login
+    const res = await axios.post(`https://localhost:7198/api/Users/Login`,{
+      username : user.username,
+      password : user.password,
+      confirmpassword : user.password
+    },{
+      headers : {
+        'Accept' : 'application/json'
+      }
+    })
+    authenticate(res)
+    window.location.href = 'http://localhost:3000/';
+  }
 
-  const contactSubmit = (e) => {
+  const contactSubmit = async(e) => {
     e.preventDefault();
 
     if (handleValidation()) {
-      
-      toast.success("Welcome! " + user.username, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      const res = await toast.promise(requestlogin(),{pending : "Pending..." , error: 'Login Failed!' , success : "Welcome! " + user.username})
     } else {
       toast.warn("Please Fill All Fields.", {
         position: toast.POSITION.TOP_RIGHT,
