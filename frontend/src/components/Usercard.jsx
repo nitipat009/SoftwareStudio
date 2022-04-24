@@ -25,7 +25,7 @@ function Usercard({index,id,username,password,role}) {
         <input type="text" value={user.username} onChange={handleData("username")} class="bg-transparent" />
       </td>
       <td class="p-3 px-5">
-        <input type="password" value={user.password} onChange={handleData("password")} class="bg-transparent" />
+        <input type={"password"} value={user.password} onChange={handleData("password")} class="bg-transparent" />
       </td>
       <td class="p-3 px-5">
         <select value={user.role} class="bg-transparent" onChange={handleData("role")}>

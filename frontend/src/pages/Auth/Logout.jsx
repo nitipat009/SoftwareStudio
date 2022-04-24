@@ -9,9 +9,10 @@ function Logout(){
 
     useEffect(()=>{
         handleLogout
+        const notify = toast.success('Logout Success! See you later.')
     },[])
 
-    const notify = toast.success('Logout Success! See you later.')
+    
     return(
         <Navigate to={"/"}/>
     );

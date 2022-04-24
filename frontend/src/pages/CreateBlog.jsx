@@ -1,6 +1,5 @@
 import React, { Component, useRef, useCallback, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Navigator } from "react-router-dom";
 // Editor JS
 import Embed from "@editorjs/embed";
 import Table from "@editorjs/table";
