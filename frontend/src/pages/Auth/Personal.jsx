@@ -52,7 +52,7 @@ function Personal() {
     if (file !== null) {
       const img_url = await uploadimg(file);
       // Save to Backend
-      setData(...data, { img: img_url.file.url });
+      data.img = img_url.file.url
       const res = await axios.put(
         `https://localhost:7198/api/Users/${data.id}`,
         {
@@ -88,7 +88,7 @@ function Personal() {
       toast.success("Ready to edit!");
       setedit(!onedit);
 
-      user_input.readOnly = !user_input.readOnly;
+      
       image_input.disabled = !image_input.disabled;
     }
   };
@@ -102,7 +102,7 @@ function Personal() {
       <section className="flex h-screen w-full items-center bg-gray-100 shadow-md rounded">
         <form className="flex flex-col w-full h-screen  justify-center items-center ">
           {/* Image */}
-          <label class="flex flex-col w-1/3 h-32 mt-16">
+          <label class="flex flex-col w-full h-32 mt-32">
             <div class="flex flex-col items-center justify-center pt-7">
               <img
                 id="preview"

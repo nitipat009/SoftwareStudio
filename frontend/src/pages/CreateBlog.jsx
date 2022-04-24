@@ -201,7 +201,6 @@ function CreateBlog() {
       success: "Prefered to create your Blog!",
     });
 
-    console.log("hi")
     console.log(Array(savedData.blocks).toString())
     // Backend
     const res = await toast.promise(

@@ -21,7 +21,7 @@ import ChangePassword from "./pages/Auth/ChangePassword";
 import Dashboard from "./pages/Auth/Dashboard";
 import Logout from "./pages/Auth/Logout";
 import OneBlog from "./pages/OneBlog";
-
+import CreateBlogEasy from "./pages/CreateBlogEasy";
 
 // helpers
 import { isAuth } from "./helpers/auth";
@@ -41,12 +41,12 @@ function App() {
         <Route path={"/Aboutus"} element={<Aboutus />} />
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/Register"} element={<Register />} />
-        <Route path={"/Blog/:id"} element={<OneBlog/>}/>
+        <Route path={"/Blog/:id"} element={<CreateBlogEasy/>}/>
         {/* Auth */}
         <Route element={<PrivateRoute auth={isAuth()} />}>
           {" "}
           {/*Dev*/}
-          <Route path={"/Createblog"} element={<CreateBlog />} />
+          <Route path={"/Createblog"} element={<CreateBlogEasy />} />
           <Route path={"/Profile"} element={<Personal />} />
           <Route path={"/ChangePassword"} element={<ChangePassword />} />
           <Route path={"/Dashboard"} element={<Dashboard />} />
