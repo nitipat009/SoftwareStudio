@@ -22,7 +22,7 @@ import Dashboard from "./pages/Auth/Dashboard";
 import Logout from "./pages/Auth/Logout";
 import OneBlog from "./pages/OneBlog";
 import CreateBlogEasy from "./pages/CreateBlogEasy";
-
+import OneBlogEasy from "./pages/OneBlogEasy";
 // helpers
 import { isAuth } from "./helpers/auth";
 
@@ -41,7 +41,7 @@ function App() {
         <Route path={"/Aboutus"} element={<Aboutus />} />
         <Route path={"/Login"} element={<Login />} />
         <Route path={"/Register"} element={<Register />} />
-        <Route path={"/Blog/:id"} element={<CreateBlogEasy/>}/>
+        <Route path={"/Blog/:id"} element={<OneBlogEasy/>}/>
         {/* Auth */}
         <Route element={<PrivateRoute auth={isAuth()} />}>
           {" "}

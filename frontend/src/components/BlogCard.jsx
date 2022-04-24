@@ -4,15 +4,10 @@ function BlogCard(props) {
   const navigate = useNavigate();
 
   const onClickHandler = () => {
-    navigate("/id"); // id blog
+    navigate(`/Blog/${props.id}`); // id blog
   };
 
-  // Date formatter
-  const longEnUSFormatter = new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  console.log(props)
 
   return (
     <div
@@ -73,7 +68,7 @@ function BlogCard(props) {
               <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
 
-            <a className="px-2">{longEnUSFormatter.format(props.date)}</a>
+            <a className="px-2">{props.date}</a>
           </div>
           <div className="inline-block pr-1">
             <svg
