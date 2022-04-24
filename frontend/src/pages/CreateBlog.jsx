@@ -16,7 +16,9 @@ import CheckList from "@editorjs/checklist";
 import Delimiter from "@editorjs/delimiter";
 import InlineCode from "@editorjs/inline-code";
 import SimpleImage from "@editorjs/simple-image";
-
+// import CommentCard from "../components/CommentCard";
+// import AddComment from "../components/AddComment";
+ 
 import { createReactEditorJS } from "react-editor-js";
 import axios from "axios";
 
@@ -235,8 +237,10 @@ function CreateBlog() {
             Save
           </button>
         </section>
-      </div>
+      </div>   
+     
     </>
+ 
   );
 }
 
