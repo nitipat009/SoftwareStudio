@@ -8,6 +8,8 @@ import React, {
 import { Link } from "react-router-dom";
 import { isAuth } from "../helpers/auth";
 import { NavLink } from "react-router-dom";
+import logoUrl from "../assets/logo.png";
+
 function Navbar() {
   // const [isLoggedIn, setisLoggedIn] = useState(
   //     true
@@ -31,20 +33,31 @@ function Navbar() {
     
   }, [state]);
 
-  
+  var scrollCheck = false;
+  window.addEventListener('scroll', (e) => {
+    if (!scrollCheck && window.scrollY < 508) {
+      document.getElementById('nav').style.backgroundColor = 'rgba(255, 255, 255, 0.6)'
+      scrollCheck = true
+    }
+    else if (scrollCheck && window.scrollY >= 508) {
+      document.getElementById('nav').style.backgroundColor = 'rgba(255, 255, 255, 1)'
+      scrollCheck = false
+    }
+  })
   
   return (
     <div className="flex w-full absolute vsz-[9999] ">
-      <nav className="h-[8em] w-full flex flex-row bg-white bg-opacity-60 m-auto p-auto items-center pt-2 pl-16 content-center  ">
+      <nav className="h-[5em] w-full flex bg-white m-auto p-auto items-center pt-2 pl-16 pr-12 fixed z-50" id="nav" style={{backgroundColor:'rgba(255, 255, 255, 0.6)', transitionProperty: "all", transitionDuration: "0.6s"}}>
         {/* Logo */}
-        <div className="basis-1/2">
-          <h1 className="text-4xl md:text-6xl">ArjanRed</h1>
+        <div className="" style={{width: "300px"}}>
+          {/* <h1 className="text-4xl md:text-6xl">ArjanRed</h1> */}
+          <img className="w-full" src={logoUrl} />
         </div>
         {/* Button */}
         <button
           data-collapse-toggle="mobile-menu"
           type="button"
-          class="absolute items-center right-0 p-2 ml-3 text-sm text-white rounded-lg md:hidden bg-orange"
+          class="absolute items-center right-0 p-2 ml-3 text-sm text-white rounded-lg md:hidden bg-orange "
           aria-controls="mobile-menu"
           aria-expanded="false"
           onClick={() => setShowM_Nav(!showM_Nav)}
@@ -77,58 +90,25 @@ function Navbar() {
         </button>
 
         {/* Nav */}
-        <div id="mobile-menu" className={(showM_Nav ? "visible " : "hidden " ) + "  nav-mobile-screen md:w-full  md:flex md:w-auto"}>
-          <ul className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl md:items-center" aria-labelledby="dropdownButton">
+        <div id="mobile-menu" className={(showM_Nav ? "visible " : "hidden " ) + "  nav-mobile-screen md:w-full md:flex md:items-end"}>
+          <div style={{width: "60px"}}></div>
+          <ul className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl" aria-labelledby="dropdownButton">
+
             <li>
-              <NavLink to={"/"} onClick={handlechange("Home")} className="block">
+              <NavLink className={"px-8 block hover:animate-pulse"} to={"/"} onClick={handlechange("Home")}>
                 Home
               </NavLink>
             </li>
-            <div className={"mobile-screen"}
-              style={{
-                width: "46px",
-                height: "0px",
-                left: "930px",
-                top: "51px",
-                border: "1px solid #000000",
-                transform: "rotate(90deg)",
-                background: "#000000",
-              }}
-            ></div>
             <li>
-              <NavLink to={"/Blog"} onClick={handlechange("Blog")}>
+              <NavLink className={"px-8 hover:animate-pulse"} to={"/Blog"} onClick={handlechange("Blog")}>
                 Blog
               </NavLink>
             </li>
-            <div className={"mobile-screen"}
-              style={{
-                width: "46px",
-                height: "0px",
-                left: "930px",
-                top: "51px",
-                border: "1px solid #000000",
-                transform: "rotate(90deg)",
-                background: "#000000",
-              }}
-            ></div>
-            
             <li>
-              <NavLink to={"/Aboutus"} onClick={handlechange("Aboutus")}>
+              <NavLink className={"px-8 hover:animate-pulse"} to={"/Aboutus"} onClick={handlechange("Aboutus")}>
                 About us
               </NavLink>
             </li>
-            <div
-              className={"mobile-screen"}
-              style={{
-                width: "46px",
-                height: "0px",
-                left: "930px",
-                top: "51px",
-                border: "1px solid #000000",
-                transform: "rotate(90deg)",
-                background: "#000000",
-              }}
-            ></div>
 
             <li className="md:hidden">
               <NavLink to={"/Login"} onClick={handlechange("Login")}>
@@ -143,13 +123,13 @@ function Navbar() {
           </ul>
         </div>
         {/* Button */}
-        <div className={(isAuth() ? "hidden " : "visible ") + "mobile-screen w-40 h-8 bg-orange inline-flex items-center text-white text-xl space-x-[0.5em] m-auto p-auto justify-between pl-2 pr-2 rounded"}>
+        <div className={(isAuth() ? "hidden " : "visible ") + "mobile-screen w-48 h-12 bg-orange inline-flex items-center text-white text-xl space-x-[0.7em] px-4 rounded"} style={{marginTop: "-0.5em"}}>
           {/* Login */}
           <NavLink
             to={"/Login"}
             onClick={handlechange("Login")}
             className={
-              pathlink === "/Login" ? "bg-white bg-opacity-30 rounded" : ""
+              pathlink === "/Login" ? "bg-white bg-opacity-30 rounded" : "" + "hover:animate-pulse"
             }
           >
             Login
@@ -169,7 +149,7 @@ function Navbar() {
             to={"/Register"}
             onClick={handlechange("Register")}
             className={
-              pathlink === "/Register" ? "bg-white bg-opacity-30 rounded" : ""
+              pathlink === "/Register" ? "bg-white bg-opacity-30 rounded" : "" + "hover:animate-pulse"
             }
           >
             Register
