@@ -4,7 +4,7 @@ import Sidebar from "../../components/Sidebar";
 import { toast } from "react-toastify";
 import axios from "axios";
 import uploadimg from "../../hooks/uploadimg";
-import { isAuth } from "../../helpers/auth";
+import { isAuth, updateUser } from "../../helpers/auth";
 
 function Personal() {
   const path = useLocation().pathname;
@@ -52,7 +52,7 @@ function Personal() {
     if (file !== null) {
       const img_url = await uploadimg(file);
       // Save to Backend
-
+      setData(...data, { img: img_url.file.url });
       const res = await axios.put(
         `https://localhost:7198/api/Users/${data.id}`,
         {
@@ -60,15 +60,16 @@ function Personal() {
           username: data.username,
           password: data.password,
           confirmPassword: data.confirmPassword,
-          img: img_url.file.url,
+          img: data.img,
         },
         {
           headers: {
             Accept: "application/json",
-          }
+          },
         }
       );
-      updateUser(data)
+      console.log(img_url.file.url);
+      updateUser(data);
     }
   };
 

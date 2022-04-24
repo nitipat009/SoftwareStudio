@@ -149,12 +149,12 @@ function Blog() {
       likes: 10,
     },
   ]);
-console.log(bloglist)
+
   let blog;
   blog = bloglist.map((e) => {
     return <BlogCard {...e} key={e.id}></BlogCard>;
   });
-  console.log(bloglist);
+  
   return (
     <div className="grid grid-cols-3 gap-6 w-3/4 mx-auto py-5 pt-[10em]">
       {blog}

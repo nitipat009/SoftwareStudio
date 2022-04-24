@@ -19,12 +19,13 @@ import InlineCode from "@editorjs/inline-code";
 import SimpleImage from "@editorjs/simple-image";
 // import CommentCard from "../components/CommentCard";
 // import AddComment from "../components/AddComment";
- 
-import { createReactEditorJS } from "react-editor-js";
 
+import { createReactEditorJS } from "react-editor-js";
 
 import uploadimg from "../hooks/uploadimg";
 import axios from "axios";
+import { isAuth } from "../helpers/auth";
+
 
 function CreateBlog() {
   const ReactEditorJS = createReactEditorJS();
@@ -41,12 +42,12 @@ function CreateBlog() {
       config: {
         uploader: {
           async uploadByFile(file) {
-            const res = await uploadimg(file)
-            return res
+            const res = await uploadimg(file);
+            return res;
           },
           async uploadByUrl(file) {
-            const res = await uploadimg(file)
-            return res
+            const res = await uploadimg(file);
+            return res;
           },
         },
       },
@@ -71,7 +72,7 @@ function CreateBlog() {
         },
         caption: "",
         withBorder: false,
-        stretched: true,
+        stretched: false,
         withBackground: false,
       },
     },
@@ -176,34 +177,58 @@ function CreateBlog() {
   ]);
   const editorCore = useRef(null);
 
+
+  const [user,setUser] = useState({
+    username : isAuth().username
+  })
   const handleInitialize = useCallback((instance) => {
     editorCore.current = instance;
     const saveButton = document.getElementById("save-button");
     const content = document.getElementById("react-editor-js-1805278c86b");
     // Wait Content Loading!
-    editorCore.current._editorJS.isReady.then( () => {
-        saveButton.style.visibility = "visible"
-        saveButton.addEventListener("click", () => {
-            handleSave();
-          });
-        }
-    )
-    
-  
-    
-      
-
-    
+    editorCore.current._editorJS.isReady.then(() => {
+      saveButton.style.visibility = "visible";
+      saveButton.addEventListener("click", () => {
+        handleSave();
+      });
+    });
   }, []);
-
 
   const handleSave = useCallback(async () => {
-    const savedData = await toast.promise(editorCore.current.save(),{pending : "Pending..." , error: 'Wrong Format!' , success : "Prefered to create your Blog!"})
+    const savedData = await toast.promise(editorCore.current.save(), {
+      pending: "Pending...",
+      error: "Wrong Format!",
+      success: "Prefered to create your Blog!",
+    });
+
+    console.log("hi")
+    console.log(Array(savedData.blocks).toString())
     // Backend
-    console.log(savedData);
-    
+    const res = await toast.promise(
+      async () => {
+        await axios.post(
+          `https://localhost:7198/api/Blogs`,
+          {
+            username : user.username,
+            Tag : String(savedData.blocks[savedData.blocks.length-1].data.text).split(":")[1],
+            Image : savedData.blocks[0].data.file.url,
+            Detail : savedData.blocks
+          },
+          {
+            headers: {
+              Accept: "application/json",
+            },
+          }
+        );
+      },
+      {
+        pending: "Pending...",
+        error: "Add Blog Failed!",
+        success: "Add Blog Success!",
+      }
+    );
   }, []);
-  
+
   return (
     <>
       <div className="flex flex-col h-full w-full">
@@ -227,10 +252,8 @@ function CreateBlog() {
             Save
           </button>
         </section>
-      </div>   
-     
+      </div>
     </>
- 
   );
 }
 
