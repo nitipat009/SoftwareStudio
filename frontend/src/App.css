@@ -119,13 +119,6 @@ button {
 #leaves i:nth-of-type(6n)  { -webkit-animation-delay: 8.5s;}
 #leaves i:nth-of-type(7n)  { -webkit-animation-delay: 2.8s;}
 #leaves i:nth-of-type(8n)  { -webkit-animation-delay: 3.5s;}
-#leaves i:nth-of-type(9n)  { -webkit-animation-delay: 3.3s;}
-#leaves i:nth-of-type(10n) { -webkit-animation-delay: 4.5s;}
-#leaves i:nth-of-type(11n) { -webkit-animation-delay: 1.2s;}
-#leaves i:nth-of-type(12n) { -webkit-animation-delay: 5.1s;}
-#leaves i:nth-of-type(13n) { -webkit-animation-delay: 1s;  }
-#leaves i:nth-of-type(14n) { -webkit-animation-delay: 6.7s;}
-#leaves i:nth-of-type(15n) { -webkit-animation-delay: 3s;  }
 
 #leaves i:nth-of-type(n)    { background: linear-gradient(to bottom right, #ffe600, #ffd900); }
 #leaves i:nth-of-type(2n+2)  { background: linear-gradient(to bottom right, #ffee00, #ffbd08); }
