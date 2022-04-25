@@ -17,32 +17,13 @@ function Home() {
         Accept: "application/json",
       },
     });
-    setData(res.data);
-    setReverse(res.data.reverse());
+    setData(insertionSortLikes(res.data));
+    setReverse(insertionSortid(res.data));
   };
 
-  function comparator(a, b) {
-    if (a.likes < b.likes) return -1;
-    if (a.likes > b.likes) return 1;
-    return 0;
-  }
 
-  const [data,setData] = useState([])
-  const [reverse,setReverse] = useState([])
-  useEffect(()=>{
-    fetchData()
-  },[])
-  const fetchData = async() => {
-    const res = await axios.get(`https://localhost:7198/api/Blogs/Display`,{
-      headers : {
-        'Accept' : 'application/json'
-      }
-    })
-    setData(res.data)
-    setReverse(res.data.reverse())
-  }
 
-  function bubbleSortLikes(arr) {
+  function insertionSortLikes(arr) {
     let result = [];
     result.push(arr[0]);
     for (let i = 1 ; i < arr.length ; i++) {
@@ -61,7 +42,26 @@ function Home() {
     return result
   }
   
-  console.log(getLike(bubbleSortLikes(test_data)))
+
+  function insertionSortid(arr) {
+    let result = [];
+    result.push(arr[0]);
+    for (let i = 1 ; i < arr.length ; i++) {
+      for (let j = 0 ; j < result.length + 1 ; j++) {
+        if (j === result.length) {
+          result.push(arr[i]);
+          break;
+        }
+        if (arr[i].id > result[j].id) {
+          result.splice(j, 0, arr[i]);
+          break;
+        }
+      }  
+    }
+   
+    return result
+  }
+  
 
   return (
     <div className="flex flex-col h-full w-full">
