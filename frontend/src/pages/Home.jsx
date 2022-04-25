@@ -14,23 +14,30 @@ function Home() {
   useEffect(()=>{
     fetchData()
   },[])
+  function comparator(a, b) {
+    return b.likes - a.likes
+  }
+
+  function comparator_id(a, b) {
+    if (a.id < b.id)
+        return -1;
+    if (a.id > b.id)
+        return 1;
+    return 0;
+  }
   const fetchData = async() => {
     const res = await axios.get(`https://localhost:7198/api/Blogs/Display`,{
       headers : {
         'Accept' : 'application/json'
       }
     })
-    setData(res.data)
-    setReverse(res.data.reverse())
+   
+    setData(res.data.sort(comparator))
+    setReverse(res.data.sort(comparator_id))
+    
   }
 
-  function comparator(a, b) {
-    if (a.likes < b.likes)
-        return -1;
-    if (a.likes > b.likes)
-        return 1;
-    return 0;
-  }
+ 
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -58,7 +65,7 @@ function Home() {
             group_slide={1}
             loop={true}
             pagination={true}
-            datas={data.sort(comparator)}
+            datas={data}
             isOrange={true}
           />
         </div>

@@ -135,7 +135,7 @@ function Usercard(props) {
       <td class="p-3 px-5">
         <select
           value={user.isAdmin}
-          class="bg-transparent"
+          class="bg-transparent text-black"
           onChange={handleData("isAdmin")}
         >
           <option id="user" value="user">
