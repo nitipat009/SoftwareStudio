@@ -1,8 +1,8 @@
 import React from "react";
 function Aboutus() {
   return (
-    <div class="max-w-screen-xl px-4 mx-auto md:px-8 pb-5">
-      <div className="h-[9em]"></div>
+    <div class="max-w-screen-xl h-screen px-4 mx-auto md:px-8 pb-5">
+      <div className="h-[5em]"></div>
       <div class="mb-10 md:mb-16">
         <h1 class="text-2xl font-bold text-center mb-4">Our Team</h1>
       </div>

@@ -32,6 +32,7 @@ function Home() {
       }
     })
    
+    console.log(res.data)
     setData(res.data.sort(comparator))
     setReverse(res.data.sort(comparator_id))
     

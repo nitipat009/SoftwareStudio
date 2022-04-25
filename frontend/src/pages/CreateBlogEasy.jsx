@@ -29,32 +29,37 @@ function CreateBlogEasy() {
   };
 
   const sendData = async () => {
+    const sendData = async() =>{
+      const req = await axios.post(
+        `https://localhost:7198/api/Blogs`,
+        {
+          username: data.username,
+          Tag: data.title,
+          Image: data.img,
+          Detail: data.info,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
+    }
     if (file !== null) {
       const img_url = await uploadimg(file);
       data.img = img_url.file.url;
       const res = await toast.promise(
-        async () => {
-          await axios.post(
-            `https://localhost:7198/api/Blogs`,
-            {
-              username: data.username,
-              Tag: data.title,
-              Image: data.img,
-              Detail: data.info,
-            },
-            {
-              headers: {
-                Accept: "application/json",
-              },
-            }
-          );
-        },
+        sendData,
         {
           pending: "Pending...",
           error: "Add Blog Failed!",
           success: "Add Blog Success!",
         }
       );
+
+      if(res.data.status_code === 400){
+        toast.error(res.data.error.message)
+      }
       navigate(-1)
     }
   };

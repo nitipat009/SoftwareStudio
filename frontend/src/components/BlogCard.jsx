@@ -7,7 +7,7 @@ function BlogCard(props) {
     navigate(`/Blog/${props.id}`); // id blog
   };
 
-  console.log(props)
+  
 
   return (
     <div

@@ -189,7 +189,7 @@ function Blog() {
   
   
   return (
-    <div className="grid grid-cols-3 gap-6 w-3/4 mx-auto py-5 pt-[10em]">
+    <div className="flex flex-col gap-y-6 md:grid md:grid-cols-3 md:gap-6 w-3/4 mx-auto md:py-5 md:pt-[10em]">
       {data !== [] ? data.map((e) => {
         datamanage()
         return <BlogCard {...e}/>

@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useLocation,
   useLayoutEffect,
-  useContext
+  useContext,
 } from "react";
 import { Link } from "react-router-dom";
 import { isAuth } from "../helpers/auth";
@@ -18,10 +18,10 @@ function Navbar() {
   // const [isLoggedIn_host, setisLoggedIn_host] = useState(false);
 
   var message = false;
-  
+
   const [state, setState] = useState("Home");
   const [pathlink, setPath] = useState("");
-  const [isLogin,SetLogin] = useState(false);
+  const [isLogin, SetLogin] = useState(false);
 
   const handlechange = (text) => () => {
     setState(text);
@@ -30,26 +30,34 @@ function Navbar() {
   useLayoutEffect(() => {
     const path = location.pathname;
     setPath(path);
-    
   }, [state]);
 
   var scrollCheck = false;
-  window.addEventListener('scroll', (e) => {
+  window.addEventListener("scroll", (e) => {
     if (!scrollCheck && window.scrollY < 508) {
-      document.getElementById('nav').style.backgroundColor = 'rgba(255, 255, 255, 0.6)'
-      scrollCheck = true
+      document.getElementById("nav").style.backgroundColor =
+        "rgba(255, 255, 255, 0.6)";
+      scrollCheck = true;
+    } else if (scrollCheck && window.scrollY >= 508) {
+      document.getElementById("nav").style.backgroundColor =
+        "rgba(255, 255, 255, 1)";
+      scrollCheck = false;
     }
-    else if (scrollCheck && window.scrollY >= 508) {
-      document.getElementById('nav').style.backgroundColor = 'rgba(255, 255, 255, 1)'
-      scrollCheck = false
-    }
-  })
-  
+  });
+
   return (
     <div className="flex w-full absolute vsz-[9999]">
-      <nav className="h-[5em] w-full flex bg-white m-auto p-auto items-center pt-2 pl-16 pr-12 fixed z-50 drop-shadow-xl" id="nav" style={{backgroundColor:'rgba(255, 255, 255, 0.6)', transitionProperty: "all", transitionDuration: "0.6s"}}>
+      <nav
+        className="h-[5em] w-full flex bg-white m-auto p-auto items-center pt-2 pl-16 pr-12 fixed z-50 drop-shadow-xl"
+        id="nav"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.6)",
+          transitionProperty: "all",
+          transitionDuration: "0.6s",
+        }}
+      >
         {/* Logo */}
-        <div className="" style={{width: "300px"}}>
+        <div className="" style={{ width: "300px" }}>
           {/* <h1 className="text-4xl md:text-6xl">ArjanRed</h1> */}
           <img className="" alt="logo" src={logoUrl} width="240" />
         </div>
@@ -61,7 +69,7 @@ function Navbar() {
           aria-controls="mobile-menu"
           aria-expanded="false"
           onClick={() => setShowM_Nav(!showM_Nav)}
-          style={{marginTop: "-8px"}}
+          style={{ marginTop: "-8px" }}
         >
           <span class="sr-only">Open main menu</span>
           <svg
@@ -91,46 +99,88 @@ function Navbar() {
         </button>
 
         {/* Nav */}
-        <div id="mobile-menu" className={(showM_Nav ? "visible " : "hidden " ) + "  nav-mobile-screen md:w-full md:flex md:items-end"}>
-          <div style={{width: "60px"}}></div>
-          <ul className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl" aria-labelledby="dropdownButton" style={{marginTop: "-8px"}}>
-
+        <div
+          id="mobile-menu"
+          className={
+            (showM_Nav ? "visible " : "hidden ") +
+            "  nav-mobile-screen md:w-full md:flex md:items-end"
+          }
+        >
+          <div style={{ width: "60px" }}></div>
+          <ul
+            className="flex flex-col md:flex-row md:space-x-[0.5em] md:text-xl"
+            aria-labelledby="dropdownButton"
+            style={{ marginTop: "-8px" }}
+          >
             <li>
-              <NavLink className={"px-8 block hover:animate-pulse"} to={"/"} onClick={handlechange("Home")}>
+              <NavLink
+                className={"px-8 block hover:animate-pulse"}
+                to={"/"}
+                onClick={handlechange("Home")}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink className={"px-8 hover:animate-pulse"} to={"/Blog"} onClick={handlechange("Blog")}>
+              <NavLink
+                className={"px-8 hover:animate-pulse"}
+                to={"/Blog"}
+                onClick={handlechange("Blog")}
+              >
                 Blog
               </NavLink>
             </li>
             <li>
-              <NavLink className={"px-8 hover:animate-pulse"} to={"/Aboutus"} onClick={handlechange("Aboutus")}>
+              <NavLink
+                className={"px-8 hover:animate-pulse"}
+                to={"/Aboutus"}
+                onClick={handlechange("Aboutus")}
+              >
                 About us
               </NavLink>
             </li>
-
-            <li className="md:hidden">
-              <NavLink to={"/Login"} onClick={handlechange("Login")}>
-              Login
-              </NavLink>
-            </li>
-            <li className="md:hidden">
-              <NavLink to={"/Register"} onClick={handlechange("Register")}>
-              Register
-              </NavLink>
-            </li>
+            {isAuth() ? (
+              <li className="md:hidden">
+                <NavLink
+                  to={"/Profile"}
+                  className={"px-8 hover:animate-pulse"}
+                  onClick={handlechange("Login")}
+                >
+                  {isAuth().username}
+                </NavLink>
+              </li>
+            ) : (
+              <>
+                <li className="md:hidden">
+                  <NavLink to={"/Login"} onClick={handlechange("Login")}>
+                    Login
+                  </NavLink>
+                </li>
+                <li className="md:hidden">
+                  <NavLink to={"/Register"} onClick={handlechange("Register")}>
+                    Register
+                  </NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         {/* Button */}
-        <div className={(isAuth() ? "hidden " : "visible ") + "mobile-screen w-48 h-12 bg-orange inline-flex items-center text-white text-xl space-x-[0.7em] px-4 rounded"} style={{marginTop: "-0.5em"}}>
+        <div
+          className={
+            (isAuth() ? "hidden " : "visible ") +
+            "mobile-screen w-48 h-12 bg-orange inline-flex items-center text-white text-xl space-x-[0.7em] px-4 rounded"
+          }
+          style={{ marginTop: "-0.5em" }}
+        >
           {/* Login */}
           <NavLink
             to={"/Login"}
             onClick={handlechange("Login")}
             className={
-              pathlink === "/Login" ? "bg-white bg-opacity-30 rounded" : "" + "hover:animate-pulse"
+              pathlink === "/Login"
+                ? "bg-white bg-opacity-30 rounded"
+                : "" + "hover:animate-pulse"
             }
           >
             Login
@@ -150,26 +200,34 @@ function Navbar() {
             to={"/Register"}
             onClick={handlechange("Register")}
             className={
-              pathlink === "/Register" ? "bg-white bg-opacity-30 rounded" : "" + "hover:animate-pulse"
+              pathlink === "/Register"
+                ? "bg-white bg-opacity-30 rounded"
+                : "" + "hover:animate-pulse"
             }
           >
             Register
           </NavLink>
         </div>
 
-        <div className={(isAuth() ? "visible " : "hidden ") + "mobile-screen w-40 h-8 bg-orange inline-flex items-center text-white text-xl space-x-[0.5em] m-auto p-auto justify-center pl-2 pr-2 rounded"}>
+        <div
+          className={
+            (isAuth() ? "visible " : "hidden ") +
+            "mobile-screen w-40 h-8 bg-orange inline-flex items-center text-white text-xl space-x-[0.5em] m-auto p-auto justify-center pl-2 pr-2 rounded"
+          }
+        >
           {/* Login */}
           <NavLink
             to={"/Profile"}
-            onClick = {handlechange("Profile")}
+            onClick={handlechange("Profile")}
             className={
-              pathlink === "/Profile" ? "bg-white bg-opacity-30 rounded p-2" : ""
+              pathlink === "/Profile"
+                ? "bg-white bg-opacity-30 rounded p-2"
+                : ""
             }
           >
             {isAuth().username}
           </NavLink>
-        </div>   
-        
+        </div>
       </nav>
     </div>
   );
