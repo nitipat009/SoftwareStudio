@@ -29,7 +29,7 @@ function CreateBlogEasy() {
   };
 
   const sendData = async () => {
-    const sendData = async() =>{
+    const parseData = async() =>{
       const req = await axios.post(
         `https://localhost:7198/api/Blogs`,
         {
@@ -49,7 +49,7 @@ function CreateBlogEasy() {
       const img_url = await uploadimg(file);
       data.img = img_url.file.url;
       const res = await toast.promise(
-        sendData,
+        parseData,
         {
           pending: "Pending...",
           error: "Add Blog Failed!",
@@ -61,6 +61,8 @@ function CreateBlogEasy() {
         toast.error(res.data.error.message)
       }
       navigate(-1)
+    }else{
+      toast.warn("Please Fill All Field!")
     }
   };
 
@@ -112,6 +114,7 @@ function CreateBlogEasy() {
                     type={"text"}
                     id="username"
                     value={data.title}
+                    required={true}
                     onChange={handleData("title")}
                     className=" border-b-2 border-black required:border-rose-500 required:rounded bg-transparent"
                   />
@@ -145,7 +148,7 @@ function CreateBlogEasy() {
               id="role"
               rows="5"
               cols="1000"
-              
+              required={true}
               placeholder="Your Details..."
               onChange={handleData("info")}
               type={"text"}
