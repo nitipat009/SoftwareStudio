@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import { toast } from "react-toastify";
 import axios from "axios";
 import uploadimg from "../../hooks/uploadimg";
-import { isAuth, updateUser } from "../../helpers/auth";
+import { isAuth, signout, updateUser } from "../../helpers/auth";
 
 function Personal() {
   const path = useLocation().pathname;
-
+  const navigate = useNavigate()
   const [file, setFile] = useState(null);
   const showPreview = (file) => (event) => {
     if (event.target.files.length > 0) {
@@ -52,7 +52,7 @@ function Personal() {
     if (file !== null) {
       const img_url = await uploadimg(file);
       // Save to Backend
-      data.img = img_url.file.url
+      data.img = img_url.file.url;
       const res = await axios.put(
         `https://localhost:7198/api/Users/${data.id}`,
         {
@@ -88,9 +88,33 @@ function Personal() {
       toast.success("Ready to edit!");
       setedit(!onedit);
 
-      
       image_input.disabled = !image_input.disabled;
     }
+  };
+
+  const handleDelete = async () => {
+    const requestDelete = async () => {
+      const res = await axios.delete(
+        `https://localhost:7198/api/Users/${data.id}`,
+        {
+          data: {
+            id: data.id,
+            username: data.username,
+            password: data.password,
+            confirmPassword: data.confirmPassword,
+            img: data.img,
+          },
+        }
+      );
+    };
+    const res = await toast.promise(requestDelete(), {
+      pending: "Pending!",
+      error: "Delete rejected!",
+      success: "GoodBye!",
+    });
+    signout()
+    navigate("/")
+
   };
 
   return (
@@ -162,15 +186,32 @@ function Personal() {
               </div>
             </div>
             {/* Submit Button */}
-            <button
-              id="button"
-              type="button"
-              class="bg-orange hover:bg-opacity-60 active:hover:bg-opacity-40 rounded text-3xl font-bold text-white mt-5"
-              onClick={handleEdit}
-              value={onedit ? "Save" : "Edit"}
-            >
-              {onedit ? "Save" : "Edit"}
-            </button>
+            <div className="flex items-center">
+              <button
+                id="button"
+                type="button"
+                class="w-full bg-orange hover:bg-opacity-60 active:hover:bg-opacity-40 rounded text-3xl font-bold text-white"
+                onClick={handleEdit}
+                value={onedit ? "Save" : "Edit"}
+              >
+                {onedit ? "Save" : "Edit"}
+              </button>
+              <button
+                id="button"
+                type="button"
+                className={"pl-3 hover:opacity-60 rounded font-bold text-white"}
+                onClick={handleDelete}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z" />
+                </svg>
+              </button>
+            </div>
           </div>
         </form>
       </section>

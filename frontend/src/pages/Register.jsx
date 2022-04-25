@@ -3,6 +3,7 @@ import imgUrl from "../assets/bg/Login.png";
 import { ToastContainer, toast } from "react-toastify";
 import {authenticate} from '../helpers/auth';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function Register() {
@@ -11,7 +12,7 @@ function Register() {
     password: "",
     cf_password: "",
   });
-
+  const navigate = useNavigate()
   const handleData = (text) => (e) => {
     setUser({ ...user, [text]: e.target.value });
   };
@@ -62,6 +63,7 @@ function Register() {
         });
       } else {
         const res = await toast.promise(requestRegister,{pending : "Pending..." , error: 'Registor Failed!' , success : "Thank to join us!"})
+        navigate("/Login")
       }
     } else {
       toast.warn("Please Fill All Fields.", {
